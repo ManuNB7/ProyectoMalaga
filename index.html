@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemons</title>
+    <title>LibreriaFantastica</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
     <body>
@@ -15,15 +15,89 @@
         </div>
         <div id="vistaaltaautor">
             <h1>AltaAutor</h1>
+            <div id="cont-form">
+                <form class="formulario">
+                    <label class="txt-form">ID autor:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce el ID" required>
+        
+                    <label class="txt-form">Nombre:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce el nombre del autor" required>
+        
+                    <label class="txt-form">Fecha de nacimiento:</label>
+                    <input class="input-form" type="date" placeholder="Introduce la fecha de nacimiento" required>
+        
+                    <label class="txt-form">Fecha de fallecimiento:</label>
+                    <input class="input-form" type="date"></input>
+        
+                    <label class="txt-form">Nacionalidad:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce la nacionalidad" required>
+        
+                    <label class="txt-form">Biografía:</label>
+                    <input class="input-form" type="text" placeholder="Describe la biografía del autor" id="titulo" name="titulo" required>
+        
+                    <label class="txt-form">Foto:</label>
+                    <input class="input-form" type="file" required>
+        
+                    <label class="txt-form">Obras:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce las obras del autor" required>
+        
+                    <button id="btn-form" type="guardr">Guardar Libro</button>
+                </form>
+            </div>        
         </div>
         <div id="vistaaltalibro">
             <h1>AltaLibro</h1>
+            <div id="cont-form">
+                <form class="formulario">
+                    <label class="txt-form" >ID:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce el ID" required>
+        
+                    <label class="txt-form">Título:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce el título" required>
+        
+                    <label class="txt-form">Fecha de publicación:</label>
+                    <input class="input-form" type="date" required>
+        
+                    <label class="txt-form">Reseña:</label>
+                    <input class="input-form" type="reseña" placeholder="Publica la reseña" required></input>
+        
+                    <label class="txt-form">Portada (foto):</label>
+                    <input class="input-form" type="file" required>
+        
+                    <label class="txt-form">Género:</label>
+                    <input class="input-form" type="texto" placeholder="Introduce un género" id="titulo" name="titulo" required>
+        
+                    <button id="btn-form" type="guardr">Guardar Libro</button>
+                </form>
+            </div>  
         </div>
         <div id="vistalistarautor">
             <h1>ListaAutores</h1>
         </div>
         <div id="vistalistarlibro">
             <h1>ListaLibros</h1>
+            <header class="header">
+                <div class="logo">
+                    <img src="img/logo.png" alt="logo de la página">
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Libros</a></li>
+                        <li><a href="#">Géneros</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Alta fantasía</a></li>
+                                <li><a href="#">Baja fantasía</a></li>
+                                <li><a href="#">Fantasía heroica</a></li>
+                                <li><a href="#">Fantasía oscura</a></li>
+                                <li><a href="#">Ciencia ficción fantástica</a></li>
+                                <li><a href="#">Fantasía histórica</a></li>
+                                <li><a href="#">Realismo mágico</a></li>
+                            </ul></li>
+                        <li><a href="#">Asistencia</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="btn"><button>Búsqueda</button></a>
+            </header>   
         </div>
         <script type="module" src="controlador.js"></script>
     </body>
