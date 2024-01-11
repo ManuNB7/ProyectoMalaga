@@ -1,43 +1,7 @@
 #vistaaltaautor,#vistaaltalibro,#vistalistarautor,#vistalistarlibro{
     display: none;
 }
-body {
-    background-color: rgba(74, 27, 27, 0.194);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-#cont-form {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-height: 700px
-}
-
-.formulario {
-    background-color: #e0dddd;
-    padding: 20px;
-    width: 300px;
-    border: 1px solid black;
-}
-
-.txt-form {
-    display: block;
-    margin-bottom: 8px;
-}
-
-.input-form {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 12px;
-    box-sizing: border-box
-}
-
-#btn-form {
-    background-color: #010101;
-    color: #fff;
-    padding: 10px;
-    border: 1px solid black;
-    width: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,800&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
@@ -51,17 +15,28 @@ body{
 }
 
 .header{
-    background-color:darkslategray;
+    position: fixed;
+    z-index:1;
+    width: 100%;
+    background-color:darkslategray !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 85px;
     padding: 5px 10%;
+    transition-property: background-color, color;
+    transition-duration: 0.5s ease-in-out;
 
+}
+
+.header-dark{
+    background-color: black;
+    color: black;
 }
 
 .header .logo{
     cursor: pointer;
+    z-index: 10;
 }
 
 .header .logo img{
@@ -76,11 +51,12 @@ body{
 
 .header .nav-links{
     list-style: none;
+    
 }
 
 .header .nav-links li{
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 55px;
 }
 
 .header .nav-links a{
@@ -145,7 +121,20 @@ img{
     font-size: 15px;
 }
 
+.banner{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../img/banner.jpg);
+    background-size: cover;
+}
 
-
-
-
+.header.hide {
+    height: 0;
+    opacity: 0;
+    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    
+}
+.header.reveal{
+    transition: height 0.5s ease-out, opacity 0.5s ease-out;
+}
