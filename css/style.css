@@ -10,10 +10,44 @@
     font-size: 20px;
 }
 
-body{
-    background-color: lightyellow;
-}
-
+body {
+    background-color: rgba(74, 27, 27, 0.194);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  #cont-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 700px
+  }
+  
+  .formulario {
+    background-color: #e0dddd;
+    padding: 20px;
+    width: 300px;
+    border: 1px solid black;
+  }
+  
+  .txt-form {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .input-form {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box
+  }
+  
+  #btn-form {
+    background-color: #010101;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid black;
+    width: 100%;
+  }  
 .header{
     position: fixed;
     z-index:1;

@@ -1,4 +1,5 @@
 import { Vista } from './vista.js'
+import { Rest } from '../service/rest.js'
 export class VistaListarAutor extends Vista{
     constructor (controlador,base) {
         super(controlador,base)
@@ -37,4 +38,12 @@ export class VistaListarAutor extends Vista{
      * Marca y desmarca el autor como favorito del usuario
      */
     marcarFavorito = () => {};
+    llamadaAJAX = () => {
+        const params = {};
+        const url = 'libros.php';
+        Rest.get(url, params, this.resultadoAJAX);
+    }
+    resultadoAJAX = (objeto) => {
+        console.log(objeto);
+    }
 }

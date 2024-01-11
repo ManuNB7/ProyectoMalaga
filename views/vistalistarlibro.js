@@ -8,9 +8,6 @@ export class VistaListarLibro extends Vista{
 
         this.btnlistarautor = document.getElementById("btnlistarautores")
         this.btnlistarautor.onclick = this.irListaAutor
-
-        this.llamadaAJAX()
-
     }
     irListaAutor = () => {
         this.controlador.irAVista(this.controlador.vistaListarAutor)
@@ -44,7 +41,7 @@ export class VistaListarLibro extends Vista{
     llamadaAJAX = () => {
         const params = {};
         const url = 'libros.php';
-        Rest.get(url,params, this.resultadoAJAX);
+        Rest.get(url, params, this.resultadoAJAX);
     }
     resultadoAJAX = (objeto) => {
         console.log(objeto);

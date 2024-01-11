@@ -1,4 +1,5 @@
 import { Vista } from './vista.js'
+import { Rest } from '../service/rest.js'
 export class VistaAltaLibro extends Vista{
     constructor (controlador,base) {
         super(controlador,base)
@@ -6,7 +7,10 @@ export class VistaAltaLibro extends Vista{
         this.controlador = controlador
         
         this.btnaltaautor = document.getElementById("btnaltaautores")
+        this.btnenviar = document.getElementById("enviarlibro")
+
         this.btnaltaautor.onclick = this.irAutor
+        this.btnenviar.onclick = this.insertar
 
     }
     irAutor = () => {
@@ -21,5 +25,37 @@ export class VistaAltaLibro extends Vista{
     /**
      * Solicita al servidor la creación del libro
      */
-    insertar = () => {}
+    insertar = (event) => {
+        event.preventDefault()
+        let titulo = document.getElementById('titulo').value;
+        let fechaPublicacion = document.getElementById('fechaPublicacion').value;
+        let resena = document.getElementById('resena').value;
+        let genero = document.getElementById('genero').value;
+        
+        let portada = document.getElementById('portada');
+        let foto = portada.files[0];
+    
+        let reader = new FileReader();
+        // Leer la imagen como base64
+        reader.readAsDataURL(foto);
+
+        reader.onload = function (e) {
+            // e.target.result contiene el contenido en base64
+            let fotoBase64 = e.target.result;
+            const params = {
+                "titulo": titulo,
+                "fechaPublicacion": fechaPublicacion,
+                "resena": resena,
+                "portada": foto,
+                "genero": genero
+            };
+            const url = 'libros.php';
+            //Rest.post(url,params, this.resultadoAJAX);
+            console.log(params)
+        }
+    }
+
+    resultadoAJAX = (objeto) => {
+        console.log(objeto);
+    }
 }

@@ -17,31 +17,25 @@
             <h1>AltaAutor</h1>
             <div id="cont-form">
                 <form class="formulario">
-                    <label class="txt-form">ID autor:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce el ID" required>
-        
                     <label class="txt-form">Nombre:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce el nombre del autor" required>
-        
+                    <input id="nombreInput" class="input-form" type="text" placeholder="Introduce el nombre del autor" required>
+                
                     <label class="txt-form">Fecha de nacimiento:</label>
-                    <input class="input-form" type="date" placeholder="Introduce la fecha de nacimiento" required>
-        
+                    <input id="fechanacimientoInput" class="input-form" type="date" placeholder="Introduce la fecha de nacimiento" required>
+                
                     <label class="txt-form">Fecha de fallecimiento:</label>
-                    <input class="input-form" type="date"></input>
-        
+                    <input id="fechafallecimientoInput" class="input-form" type="date"></input>
+                
                     <label class="txt-form">Nacionalidad:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce la nacionalidad" required>
-        
+                    <input id="nacionalidadInput" class="input-form" type="text" placeholder="Introduce la nacionalidad" required>
+                
                     <label class="txt-form">Biografía:</label>
-                    <input class="input-form" type="text" placeholder="Describe la biografía del autor" id="titulo" name="titulo" required>
-        
+                    <input id="biografiaInput" class="input-form" type="text" placeholder="Describe la biografía del autor" required>
+                
                     <label class="txt-form">Foto:</label>
-                    <input class="input-form" type="file" required>
-        
-                    <label class="txt-form">Obras:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce las obras del autor" required>
-        
-                    <button id="btn-form" type="guardr">Guardar Libro</button>
+                    <input id="fotoInput" class="input-form" type="file" required>
+                
+                    <button id="enviarautor">Guardar Libro</button>
                 </form>
             </div>        
         </div>
@@ -49,25 +43,22 @@
             <h1>AltaLibro</h1>
             <div id="cont-form">
                 <form class="formulario">
-                    <label class="txt-form" >ID:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce el ID" required>
-        
                     <label class="txt-form">Título:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce el título" required>
+                    <input id="titulo" class="input-form" type="texto" placeholder="Introduce el título" required>
         
                     <label class="txt-form">Fecha de publicación:</label>
-                    <input class="input-form" type="date" required>
+                    <input id="fechaPublicacion" class="input-form" type="date" required>
         
                     <label class="txt-form">Reseña:</label>
-                    <input class="input-form" type="reseña" placeholder="Publica la reseña" required></input>
+                    <input id="resena" class="input-form" type="reseña" placeholder="Publica la reseña" required></input>
         
                     <label class="txt-form">Portada (foto):</label>
-                    <input class="input-form" type="file" required>
+                    <input id="portada" class="input-form" type="file" required>
         
                     <label class="txt-form">Género:</label>
-                    <input class="input-form" type="texto" placeholder="Introduce un género" id="titulo" name="titulo" required>
+                    <input class="input-form" type="texto" placeholder="Introduce un género" id="genero" name="titulo" required>
         
-                    <button id="btn-form" type="guardr">Guardar Libro</button>
+                    <button id="enviarlibro" type="guardr">Guardar Libro</button>
                 </form>
             </div>  
         </div>
