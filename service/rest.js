@@ -7,7 +7,15 @@ export class Rest {
       paramsGET += param + '='
       paramsGET += params[param] + '&'
     }
-    fetch(encodeURI(url + paramsGET.substring(0, paramsGET.length - 1)))
+    const opciones = {
+      mode: 'cors',
+      headers:{
+        'Access-Control-Allow-Origin':'*',
+        'Fanlibtoken':'testToken'
+      }
+    }
+    
+    fetch(encodeURI(url + paramsGET.substring(0, paramsGET.length - 1)), opciones)
       .then(respuesta => respuesta.json())
       .then(objeto => {
         if (callback) { callback(objeto) }
@@ -22,6 +30,7 @@ export class Rest {
       const opciones = {
         method: 'POST',
         body: parametros,
+        mode: 'cors',
         headers:{
           'Access-Control-Allow-Origin':'*',
           'Fanlibtoken':'testToken'
@@ -41,6 +50,7 @@ export class Rest {
         const opciones = {
           method: 'PUT',
           body: parametros,
+          
           headers:{
             'Access-Control-Allow-Origin':'*',
             'Fanlibtoken':'testToken'
