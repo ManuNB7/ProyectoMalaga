@@ -1,49 +1,47 @@
-import { Vista } from './vista.js'
-import { Rest } from '../service/rest.js'
-export class VistaListarLibro extends Vista{
-    constructor (controlador,base) {
-        super(controlador,base)
-        this.base=base
-        this.controlador = controlador
+import { Vista } from './vista.js';
+import { Rest } from '../service/rest.js';
 
-        this.btnlistarautor = document.getElementById("btnlistarautores")
-        this.btnlistarautor.onclick = this.irListaAutor
-    }
-    irListaAutor = () => {
-        this.controlador.irAVista(this.controlador.vistaListarAutor)
-    }
-    /**
-     * Obtiene la lista de libros y lo muestra
-     */
-    listar = () => {}
+export class VistaListarLibro extends Vista {
+  constructor(controlador, base) {
+    super(controlador, base);
+    this.base = base;
+    this.controlador = controlador;
 
-    /**
-     * Muestra los libros que cumplen con el criterio de búsqueda
-     * Tendrá su input con button para buscar.
-     */
-    buscar = () => {}
+    this.btnlistarautor = document.getElementById("btnlistarautores");
+    this.btnlistarautor.onclick = this.irListaAutor;
+  }
 
-    /**
-     * Eliminar el libro seleccionado
-     */
-    eliminar = () => {}
+  irListaAutor = () => {
+    this.controlador.irAVista(this.controlador.vistaListarAutor);
+  }
 
-    /**
-     * Cambio de vista por Controlador a la lista de autores
-     */
-    irAAutores = () => {}
+  listar = () => {
+    // Implementa la lógica para obtener y mostrar la lista de libros.
+  }
 
-    /**
-     * Marca y desmarca el libro como favorito del usuario
-     */
-    marcarFavorito = () => {}
+  buscar = () => {
+    // Implementa la lógica para buscar libros.
+  }
 
-    llamadaAJAX = () => {
-        const params = {};
-        const url = 'https://migueljaque.com/fanlib/v1/autor&#39';
-        Rest.get(url, params, this.resultadoAJAX);
-    }
-    resultadoAJAX = (objeto) => {
-        console.log(objeto);
-    }
+  eliminar = () => {
+    // Implementa la lógica para eliminar libros.
+  }
+
+  irAAutores = () => {
+    // Implementa el cambio de vista a la lista de autores.
+  }
+
+  marcarFavorito = () => {
+    // Implementa la lógica para marcar/desmarcar un libro como favorito.
+  }
+
+  llamadaAJAX = () => {
+    const params = {};
+    const url = 'https://migueljaque.com/fanlib/v1/autor';
+    Rest.get(url, params, this.resultadoAJAX);
+  }
+
+  resultadoAJAX = (objeto) => {
+    console.log(objeto);
+  }
 }
