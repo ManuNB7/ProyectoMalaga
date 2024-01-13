@@ -10,12 +10,18 @@ export class Rest {
     const opciones = {
       mode: 'cors',
       headers: {
+        'Access-Control-Allow-Origin':'*',
         'Fanlibtoken': 'testToken'
       }
     };
-
+  
     fetch(encodeURI(url + paramsGET.substring(0, paramsGET.length - 1)), opciones)
-      .then(respuesta => respuesta.json())
+      .then(respuesta => {
+        if (!respuesta.ok) {
+          throw new Error(`HTTP error! Status: ${respuesta.status}`);
+        }
+        return respuesta.json();
+      })
       .then(objeto => {
         if (callback) { callback(objeto); }
       })
