@@ -65,18 +65,22 @@ export class VistaListarLibro extends Vista {
     // Implementa la lógica para marcar/desmarcar un libro como favorito.
   }
 
+  // Después de realizar la llamada AJAX en tu método llamadaAJAX:
   llamadaAJAX = () => {
     const params = {};
     const url = 'https://migueljaque.com/fanlib/v1/obra';
     Rest.get(url, params, this.resultadoAJAX);
-
   }
 
-  resultadoAJAX = (objeto) => {
+  resultadoAJAX = (obras) => {
     try {
-      console.log(objeto);
+        // Llama al método listar para mostrar las obras en la tabla
+        this.listar(obras);
+
+        // Deja la línea que imprime en la consola si la necesitas
+        console.log(obras);
     } catch (error) {
-      console.error('Error al parsear la respuesta JSON:', error);
+        console.error('Error al parsear la respuesta JSON:', error);
     }
   }
 }
