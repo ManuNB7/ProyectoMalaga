@@ -33,35 +33,18 @@ export class VistaAltaAutor extends Vista{
         let fechafallecimiento = document.getElementById('fechafallecimientoInput').value;
         let nacionalidad = document.getElementById('nacionalidadInput').value;
         let biografia = document.getElementById('biografiaInput').value;
-    
-        let fotoInput = document.getElementById('fotoInput');
-        let fotoFile = fotoInput.files[0];
-    
-        let reader = new FileReader();
-        
-        // Leer la imagen como base64
-        reader.readAsDataURL(fotoFile);
 
-        reader.onload = function (e) {
-            // e.target.result contiene el contenido en base64
-            let fotoBase64 = e.target.result;
-    
-            // Continuar con la lógica de la solicitud AJAX
-            const params = {
-                "nombre": nombre,
-                "fechanacimiento": fechanacimiento,
-                "fechafallecimiento": fechafallecimiento,
-                "nacionalidad": nacionalidad,
-                "biografia": biografia,
-                "foto": fotoBase64
-            };
-            const url = 'libros.php';
-    
-            // Rest.post(url, params, this.resultadoAJAX);
-            console.log(params);
+        // Continuar con la lógica de la solicitud AJAX
+        const params = {
+            "nombre": nombre,
+            "fecha_nacimiento": fechanacimiento,
+            "fecha_muerte": fechafallecimiento,
+            "nacionalidad": nacionalidad,
+            "biografia": biografia,
+            "foto": "aaaa"
         };
-    
-      
+        const url = 'https://migueljaque.com/fanlib/v1/autor';
+        Rest.post(url, params, this.resultadoAJAX);
     }
     
     resultadoAJAX = (objeto) => {

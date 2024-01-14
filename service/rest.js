@@ -32,16 +32,16 @@ export class Rest {
 
   static post(url, params, callback) {
     const parametros = new FormData();
-    for (const param in params) {
-      parametros.append(param, params[param]);
-    }
+    parametros.append('data', JSON.stringify(params));  // 'data' es el nombre que le das al campo
+
     const opciones = {
       method: 'POST',
       body: parametros,
       mode: 'cors',
       headers: {
-        'Fanlibtoken': 'testToken'
-      }
+        'Access-Control-Allow-Origin': '*',
+        'Fanlibtoken': 'testToken',
+      },
     };
 
     fetch(url, opciones)
@@ -62,7 +62,8 @@ export class Rest {
       method: 'PUT',
       body: parametros,
       headers: {
-        'Fanlibtoken': 'testToken'
+          'Access-Control-Allow-Origin':'*',
+        'Fanlibtoken': 'XoutELXK4h'
       }
     };
 

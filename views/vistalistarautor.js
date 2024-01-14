@@ -40,7 +40,7 @@ export class VistaListarAutor extends Vista{
     marcarFavorito = () => {};
     llamadaAJAX = () => {
         const params = {};
-        const url = 'libros.php';
+        const url = 'https://migueljaque.com/fanlib/v1/autor';
         Rest.get(url, params, this.resultadoAJAX);
     }
     resultadoAJAX = (objeto) => {
