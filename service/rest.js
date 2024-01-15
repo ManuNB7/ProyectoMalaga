@@ -1,12 +1,7 @@
 export class Rest {
   token = 'XoutELXK4h';
 
-  static get(url, params, callback) {
-    let paramsGET = '?';
-    for (const param in params) {
-      paramsGET += param + '=';
-      paramsGET += params[param] + '&';
-    }
+  static get(url, callback) {
     const opciones = {
       mode: 'cors',
       headers: {
@@ -15,7 +10,7 @@ export class Rest {
       }
     };
   
-    fetch(encodeURI(url + paramsGET.substring(0, paramsGET.length - 1)), opciones)
+    fetch(url, opciones)
       .then(respuesta => {
         if (!respuesta.ok) {
           throw new Error(`HTTP error! Status: ${respuesta.status}`);

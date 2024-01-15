@@ -39,9 +39,8 @@ export class VistaListarAutor extends Vista{
      */
     marcarFavorito = () => {};
     llamadaAJAX = () => {
-        const params = {};
         const url = 'https://migueljaque.com/fanlib/v1/autor';
-        Rest.get(url, params, this.resultadoAJAX);
+        Rest.get(url, this.resultadoAJAX);
     }
     resultadoAJAX = (objeto) => {
         console.log(objeto);
