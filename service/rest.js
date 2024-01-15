@@ -11,7 +11,7 @@ export class Rest {
       mode: 'cors',
       headers: {
         'Access-Control-Allow-Origin':'*',
-        'Fanlibtoken': 'testToken'
+        'Fanlibtoken': 'XoutELXK4h'
       }
     };
   
@@ -31,16 +31,11 @@ export class Rest {
   }
 
   static post(url, params, callback) {
-    const parametros = new FormData();
-    parametros.append('data', JSON.stringify(params));  // 'data' es el nombre que le das al campo
-
     const opciones = {
       method: 'POST',
-      body: parametros,
-      mode: 'cors',
+      body: JSON.stringify(params),
       headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Fanlibtoken': 'testToken',
+        'Fanlibtoken': 'XoutELXK4h'
       },
     };
 

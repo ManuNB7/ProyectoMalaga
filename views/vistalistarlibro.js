@@ -9,16 +9,11 @@ export class VistaListarLibro extends Vista {
     this.controlador = controlador;
 
     this.btnlistarautor = document.getElementById("btnlistarautores");
-    this.btnlistarautor.onclick = this.irListaAutor;
+    this.btnlistarautor.onclick = this.irAAutores;
 
     // Crea una instancia del ModeloLibro
     this.modeloLibro = new ModeloLibro();
   }
-
-  irListaAutor = () => {
-    this.controlador.irAVista(this.controlador.vistaListarAutor);
-  }
-
   listar = (datosLibros) => {
     const cuerpoTablaLibros = document.getElementById("cuerpoTablaLibros");
 
@@ -59,6 +54,7 @@ export class VistaListarLibro extends Vista {
 
   irAAutores = () => {
     // Implementa el cambio de vista a la lista de autores.
+    this.controlador.irAVista(this.controlador.vistaListarAutor);
   }
 
   marcarFavorito = () => {

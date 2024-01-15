@@ -37,7 +37,7 @@ export class VistaAltaAutor extends Vista{
         // Continuar con la lógica de la solicitud AJAX
         const params = {
             "nombre": nombre,
-            "fecha_nacimiento": fechanacimiento,
+            "fecha_nac": fechanacimiento,
             "fecha_muerte": fechafallecimiento,
             "nacionalidad": nacionalidad,
             "biografia": biografia,
