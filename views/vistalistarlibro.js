@@ -63,9 +63,8 @@ export class VistaListarLibro extends Vista {
 
   // Después de realizar la llamada AJAX en tu método llamadaAJAX:
   llamadaAJAX = () => {
-    const params = {};
     const url = 'https://migueljaque.com/fanlib/v1/obra';
-    Rest.get(url, params, this.resultadoAJAX);
+    Rest.get(url, this.resultadoAJAX);
   }
 
   resultadoAJAX = (obras) => {

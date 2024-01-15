@@ -15,7 +15,7 @@ export class Rest {
         if (!respuesta.ok) {
           throw new Error(`HTTP error! Status: ${respuesta.status}`);
         }
-        return respuesta.json();
+        return respuesta.json();  
       })
       .then(objeto => {
         if (callback) { callback(objeto); }

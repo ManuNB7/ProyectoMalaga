@@ -27,12 +27,12 @@ export class VistaAltaLibro extends Vista{
      */
     insertar = (event) => {
         event.preventDefault()
-        let titulo = document.getElementById('titulo').value;
-        let fechaPublicacion = document.getElementById('fechaPublicacion').value;
-        let resena = document.getElementById('resena').value;
-        let genero = document.getElementById('genero').value;
+        let titulo = document.getElementById('tituloInput').value;
+        let fechaPublicacion = document.getElementById('fechaPublicacionInput').value;
+        let resena = document.getElementById('resenaInput').value;
+        let genero = document.getElementById('generoInput').value;
         
-        let portada = document.getElementById('portada');
+        let portada = document.getElementById('portadaInput');
         let foto = portada.files[0];
     
         let reader = new FileReader();
