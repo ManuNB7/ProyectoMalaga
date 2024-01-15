@@ -23,9 +23,34 @@ export class VistaListarLibro extends Vista {
     // Implementa la lógica para buscar libros.
   }
 
-  eliminar = () => {
+  /*eliminar = () => {
     // Implementa la lógica para eliminar libros.
-  }
+    document.getElementById('btnBorrarLibros').addEventListener('click', function() {
+      const librosSeleccionados = obtenerLibrosSeleccionados();
+      if (librosSeleccionados.length > 0) {
+          borrarLibros(librosSeleccionados);
+      } else {
+          alert('Selecciona al menos un libro para borrar.');
+      }
+    });
+    
+    function obtenerLibrosSeleccionados() {
+        const checkboxes = document.querySelectorAll('.checkbox-libro:checked');
+        const librosSeleccionados = Array.from(checkboxes).map(checkbox => checkbox.dataset.id);
+        return librosSeleccionados;
+    }
+    
+    function borrarLibros(librosIds) {
+        // Realiza la llamada AJAX para borrar los libros en el servidor
+        const urlBorrarLibros = 'https://migueljaque.com/fanlib/v1/obra';
+        const params = { librosIds: librosIds };
+    
+        Rest.post(urlBorrarLibros, params, function() {
+            console.log('Libros borrados exitosamente.');
+        });
+    }
+  
+  }*/
 
   irAAutores = () => {
     // Implementa el cambio de vista a la lista de autores.

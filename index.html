@@ -89,6 +89,20 @@
                 </nav>
                 <a href="#" class="btn"><button>Búsqueda</button></a>
             </header>
+            <table id="tablaLibros">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Fecha de Publicación</th>
+                        <th>Reseña</th>
+                        <td><input type="checkbox" class="checkbox-libro" data-id="ID_DEL_LIBRO"></td>
+    
+                        <!-- Agrega más encabezados según las propiedades de los libros -->
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaLibros"></tbody>
+            </table>
+            <button id="btnBorrarLibros">Borrar Libros Seleccionados</button>
             <section id="libros" class="banner"></section>
             <script src="animacionlibro.js"></script>
             <img src="img/logo.png" alt="logo de la página">
