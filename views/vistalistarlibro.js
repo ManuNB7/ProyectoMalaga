@@ -15,7 +15,13 @@ export class VistaListarLibro extends Vista {
     this.modeloLibro = new ModeloLibro();
   }
   listar = (datosLibros) => {
-    const cuerpoTablaLibros = document.getElementById("cuerpoTablaLibros");
+    const cuerpoTablaLibros = document.getElementById("contenedorLibros");
+
+    // Verificar si el elemento existe antes de intentar acceder a él
+    if (!cuerpoTablaLibros) {
+        console.error("Elemento cuerpoTablaLibros no encontrado.");
+        return;
+    }
 
     // Limpiar la tabla antes de agregar nuevos datos
     cuerpoTablaLibros.innerHTML = "";
@@ -72,10 +78,27 @@ export class VistaListarLibro extends Vista {
         // Llama al método listar para mostrar las obras en la tabla
         this.listar(obras);
 
+        // Muestra las obras en el contenedorLibros
+        const contenedorLibros = document.getElementById("contenedorLibros");
+        obras.forEach(libro => {
+            const divLibro = document.createElement("div");
+            divLibro.classList.add("contenedor");
+            
+            const pTitulo = document.createElement("p");
+            pTitulo.textContent = libro.titulo;
+            divLibro.appendChild(pTitulo);
+            
+            const imgPortada = document.createElement("img");
+            imgPortada.src = libro.portada; // Ajusta esto según cómo estén estructurados los datos
+            divLibro.appendChild(imgPortada);
+            
+            contenedorLibros.appendChild(divLibro);
+        });
+
         // Deja la línea que imprime en la consola si la necesitas
         console.log(obras);
     } catch (error) {
         console.error('Error al parsear la respuesta JSON:', error);
     }
-  }
+}
 }
