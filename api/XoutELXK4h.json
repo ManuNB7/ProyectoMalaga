@@ -27,6 +27,7 @@
 		"insertar_autor":"INSERT INTO Autor (nombre,fecha_nac,fecha_muerte,nacionalidad,biografia,foto) values(:nombre,:fecha_nac,:fecha_muerte,:nacionalidad,:biografia,:foto)",
 		"listar_autores_basico":"SELECT * from Autor",
 		"insertar_obra":"INSERT INTO Obra (autor_obra,titulo,fecha_publicacion,resena,portada,genero) values(:autor_obra,:titulo,:fecha_publicacion,:resena,:portada,:genero)",
-		"listar_obras_basico":"SELECT * from Obra"
+		"listar_obras_basico":"SELECT * from Obra",
+		"borrar_autor": "DELETE * from Autor where id=:id"
 	}
 }

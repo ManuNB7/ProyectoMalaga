@@ -65,4 +65,21 @@ export class Rest {
         console.error('Error en la solicitud PUT:', error);
       });
   }
+  static delete(url, callback) {
+    const opciones = {
+      method: 'DELETE',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Fanlibtoken': 'XoutELXK4h'
+      }
+    };
+
+    fetch(url, opciones)
+      .then(respuesta => {
+        if (callback) { callback(); }
+      })
+      .catch(error => {
+        console.error('Error en la solicitud DELETE:', error);
+      });
+  }
 }

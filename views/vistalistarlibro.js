@@ -101,6 +101,10 @@ export class VistaListarLibro extends Vista {
             imgPortada.src = libro.portada; // Ajusta esto según cómo estén estructurados los datos
             divLibro.appendChild(imgPortada);
             
+            const btnBorrar = document.createElement("button");
+            btnBorrar.textContent = "Borrar";
+            divLibro.appendChild(btnBorrar);
+
             contenedorLibros.appendChild(divLibro);
         });
 

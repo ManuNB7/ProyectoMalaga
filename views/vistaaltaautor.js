@@ -1,5 +1,5 @@
 import { Vista } from './vista.js'
-import { Rest } from '../service/rest.js'
+import { ModeloAutor } from '../models/modeloautor.js'
 export class VistaAltaAutor extends Vista{
     constructor (controlador,base) {
         super(controlador,base)
@@ -33,18 +33,45 @@ export class VistaAltaAutor extends Vista{
         let fechafallecimiento = document.getElementById('fechafallecimientoInput').value;
         let nacionalidad = document.getElementById('nacionalidadInput').value;
         let biografia = document.getElementById('biografiaInput').value;
+    
+        // Obtener la imagen en base64
+        let imagenautorInput = document.getElementById('imagenautorInput');
+        let fotoBase64 = null;
+    
+        if (imagenautorInput.files.length > 0) {
+            const file = imagenautorInput.files[0];
+            const reader = new FileReader();
+    
+            reader.onload = () => {
+                fotoBase64 = reader.result.split(',')[1];
+    
+                // Continuar con la lógica de la solicitud AJAX
+                const params = {
+                    "nombre": nombre,
+                    "fecha_nac": fechanacimiento,
+                    "fecha_muerte": fechafallecimiento,
+                    "nacionalidad": nacionalidad,
+                    "biografia": biografia,
+                    "foto": fotoBase64
+                };
+    
+                ModeloAutor.guardarAutor(params);
+            };
+    
+            reader.readAsDataURL(file);
+        } else {
+            console.log("No hay imagen")
+            const params = {
+                "nombre": nombre,
+                "fecha_nac": fechanacimiento,
+                "fecha_muerte": fechafallecimiento,
+                "nacionalidad": nacionalidad,
+                "biografia": biografia,
+                "foto": "fotoBase64"
+            };
 
-        // Continuar con la lógica de la solicitud AJAX
-        const params = {
-            "nombre": nombre,
-            "fecha_nac": fechanacimiento,
-            "fecha_muerte": fechafallecimiento,
-            "nacionalidad": nacionalidad,
-            "biografia": biografia,
-            "foto": "aaaa"
-        };
-        const url = 'https://migueljaque.com/fanlib/v1/autor';
-        Rest.post(url, params, this.resultadoAJAX);
+            ModeloAutor.guardarAutor(params);
+        }
     }
     
     resultadoAJAX = (objeto) => {
