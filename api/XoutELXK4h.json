@@ -1,7 +1,7 @@
 {
 	"campos":{
 		"Autor":{
-			"id":"SQLITE3_INTERGER",
+			"id":"SQLITE3_INTEGER",
 			"nombre":"SQLITE3_TEXT",
 			"fecha_nac":"SQLITE3_TEXT",
 			"fecha_muerte":"SQLITE3_TEXT",
@@ -10,23 +10,23 @@
 			"foto":"SQLITE3_BLOB"
 		},
 		"Genero":{
-			"id":"SQLITE3_INTERGER",
+			"id":"SQLITE3_INTEGER",
 			"genero":"SQLITE3_TEXT"
 		},
 		"Obra":{
-			"id":"SQLITE3_INTERGER",
-			"autor_obra":"SQLITE3_INTERGER",
+			"id":"SQLITE3_INTEGER",
+			"autor_obra":"SQLITE3_INTEGER",
 			"titulo":"SQLITE3_TEXT",
 			"fecha_publicacion":"SQLITE3_TEXT",
 			"resena":"SQLITE3_TEXT",
 			"portada":"SQLITE3_BLOB",
-			"genero":"SQLITE3_INTERGER"
+			"genero":"SQLITE3_INTEGER"
 		}
 	},
 	"sentencias":{
 		"insertar_autor":"INSERT INTO Autor (nombre,fecha_nac,fecha_muerte,nacionalidad,biografia,foto) values(:nombre,:fecha_nac,:fecha_muerte,:nacionalidad,:biografia,:foto)",
 		"listar_autores_basico":"SELECT * from Autor",
-		"insertar_obra":"INSERT INTO Obra (autor_obra,fecha_publicacion,resena,portada,genero) values(:autor_obra,:fecha_publicacion,:resena,:portada,:genero)",
+		"insertar_obra":"INSERT INTO Obra (autor_obra,titulo,fecha_publicacion,resena,portada,genero) values(:autor_obra,:titulo,:fecha_publicacion,:resena,:portada,:genero)",
 		"listar_obras_basico":"SELECT * from Obra"
 	}
 }

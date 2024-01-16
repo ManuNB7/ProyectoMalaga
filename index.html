@@ -25,6 +25,8 @@
                     <h1 class="texto-encima">FANLIB</h1>
                 </section>
                 <!--Encabezado-->
+                <div id="infoUltimaVisita"></div>
+
                 <!--Sobre nosostros-->
                 <section id="inicio">
         
@@ -104,8 +106,8 @@
                         <p>Reseña: </p>
                         <p><input name="msg" maxlength="140" rows="9" id="resenaInput"></p>
                         <p>Genero: <input type="number" name="genero" size="40" id="generoInput"></p>
-                        <p><label for="imageUpload">Imagen de la portada:</label>
-                            <input type="file" id="imageUpload" name="image" accept="image/*">
+                        <p><label for="portadaInput">Imagen de la portada:</label>
+                            <input type="file" id="portadaInput" name="image" accept="image/*">
                         </p>
                         <div class="botones">
                             <p>
@@ -113,6 +115,7 @@
                                 <input type="reset" value="Borrar">
                             </p>
                         </div>
+                        <div id="infoUltimaVisita"></div>
                     </form>
                 </div>
             </div>
@@ -172,6 +175,7 @@
             <div class="contenedores" id="contenedorLibros">
                 <!-- Aquí se mostrarán los libros -->
             </div>
+            <div id="infoUltimaVisita"></div>
         </div>
         
         <div>

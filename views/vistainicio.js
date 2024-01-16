@@ -5,4 +5,11 @@ export class VistaInicio extends Vista{
         this.base=base
         this.controlador = controlador
     }
+
+    mostrarInformacionUltimaVisita(ultimaVisita) {
+        const infoUltimaVisita = document.getElementById('infoUltimaVisita');
+        if (infoUltimaVisita) {
+          infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
+        }
+      }
 }

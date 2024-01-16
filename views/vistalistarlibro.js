@@ -110,5 +110,12 @@ export class VistaListarLibro extends Vista {
         console.error('Error al parsear la respuesta JSON:', error);
     }
   }
-  
+
+  mostrarInformacionUltimaVisita(ultimaVisita) {
+    const infoUltimaVisita = document.getElementById('infoUltimaVisita');
+    if (infoUltimaVisita) {
+      infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
+    }
+  }
+
 }

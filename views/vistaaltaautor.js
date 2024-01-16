@@ -49,5 +49,13 @@ export class VistaAltaAutor extends Vista{
     
     resultadoAJAX = (objeto) => {
         console.log(objeto);
+        
     }
+
+    mostrarInformacionUltimaVisita(ultimaVisita) {
+        const infoUltimaVisita = document.getElementById('infoUltimaVisita');
+        if (infoUltimaVisita) {
+          infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
+        }
+      }
 }

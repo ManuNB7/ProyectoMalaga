@@ -75,4 +75,11 @@ export class VistaListarAutor extends Vista{
         const url = 'https://migueljaque.com/fanlib/v1/autor';
         Rest.get(url, this.listar);
     }
+
+    mostrarInformacionUltimaVisita(ultimaVisita) {
+        const infoUltimaVisita = document.getElementById('infoUltimaVisita');
+        if (infoUltimaVisita) {
+          infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
+        }
+      }
 }

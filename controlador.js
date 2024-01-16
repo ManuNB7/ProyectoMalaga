@@ -24,6 +24,9 @@ class Controlador {
 
       this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio];
 
+      // Establecer cookie al cargar la página
+      this.establecerCookieUltimaVisita();
+      
       this.irAVista(this.vistaInicio)
   }
 
@@ -33,16 +36,50 @@ class Controlador {
       });
   }
 
+  // Método para establecer la cookie de última visita
+  establecerCookieUltimaVisita() {
+    console.log("Método establecerCookieUltimaVisita llamado");
+    // Obtener la fecha y hora actual
+    const fechaHoraActual = new Date();
+
+    // Convertir a cadena en formato ISO
+    const cadenaFechaHora = fechaHoraActual.toLocaleString();
+
+    // Crear la cookie
+    document.cookie = "ultimaVisita=" + cadenaFechaHora + "; path=/; SameSite=None; Secure";
+  }
+
+  // Método para mostrar la información de la última visita en cada vista
+  mostrarInformacionUltimaVisitaEnVistas() {
+    // Leer la cookie
+    const ultimaVisita = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('ultimaVisita='))
+      .split('=')[1];
+
+    // Mostrar la información en cada vista
+    this.vistas.forEach(vista => {
+      vista.mostrarInformacionUltimaVisita(ultimaVisita);
+    });
+  }
+
   irAVista(vista) {
       this.ocultarVistas();
       vista.mostrar(true);
       if(vista==this.vistaListarLibro){
         this.vistaListarLibro.llamadaAJAX()
+        this.mostrarInformacionUltimaVisitaEnVistas();
       }
       if(vista==this.vistaListarAutor){
         this.vistaListarAutor.llamadaAJAX()
       }
+
+      // Mostrar la información de la última visita al cambiar de vista
+      this.mostrarInformacionUltimaVisitaEnVistas();
   }
+  
 }
+
+
 
 window.onload = () => new Controlador();
