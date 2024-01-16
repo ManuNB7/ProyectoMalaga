@@ -32,27 +32,29 @@ export class VistaAltaLibro extends Vista{
         let resena = document.getElementById('resenaInput').value;
         let genero = document.getElementById('generoInput').value;
         
-        let portada = document.getElementById('portadaInput');
+        /*let portada = document.getElementById('portadaInput');
         let foto = portada.files[0];
     
         let reader = new FileReader();
         // Leer la imagen como base64
-        reader.readAsDataURL(foto);
-
+        /*reader.readAsDataURL(foto);
+ 
         reader.onload = function (e) {
             // e.target.result contiene el contenido en base64
-            let fotoBase64 = e.target.result;
+            
+        }*/
+        //let fotoBase64 = e.target.result;
             const params = {
                 "titulo": titulo,
-                "fechaPublicacion": fechaPublicacion,
+                "fecha_publicacion": fechaPublicacion,
                 "resena": resena,
-                "portada": foto,
-                "genero": genero
+                "portada": 'foto',
+                "genero": genero,
+                "autor_obra":1
             };
-            const url = 'libros.php';
-            //Rest.post(url,params, this.resultadoAJAX);
-            console.log(params)
-        }
+            const url = 'https://migueljaque.com/fanlib/v1/obra';
+            Rest.post(url, params, this.resultadoAJAX);
+        
     }
 
     resultadoAJAX = (objeto) => {

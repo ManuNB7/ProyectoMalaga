@@ -6,7 +6,7 @@ export class Rest {
       mode: 'cors',
       headers: {
         'Access-Control-Allow-Origin':'*',
-        'Fanlibtoken': 'testToken'
+        'Fanlibtoken': 'XoutELXK4h'
       }
     };
   
@@ -30,7 +30,7 @@ export class Rest {
       method: 'POST',
       body: JSON.stringify(params),
       headers: {
-        'Fanlibtoken': 'testToken'
+        'Fanlibtoken': 'XoutELXK4h'
       },
     };
 
@@ -53,7 +53,7 @@ export class Rest {
       body: parametros,
       headers: {
           'Access-Control-Allow-Origin':'*',
-        'Fanlibtoken': 'testToken'
+        'Fanlibtoken': 'XoutELXK4h'
       }
     };
 

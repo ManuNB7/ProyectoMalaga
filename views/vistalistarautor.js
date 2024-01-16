@@ -23,8 +23,10 @@ export class VistaListarAutor extends Vista{
             let fechaNac = autor.fecha_nac;
             let fechaMuerte = autor.fecha_muerte;
             let nacionalidad = autor.nacionalidad;
+            let img = autor.foto;
 
             const contAutor = document.createElement('div');
+            contAutor.setAttribute('class','contenedor');
 
             const nombreP = document.createElement('p');
             nombreP.textContent = nombre;
@@ -38,7 +40,9 @@ export class VistaListarAutor extends Vista{
             nacionalidadP.textContent = nacionalidad;
             contAutor.appendChild(nacionalidadP);
             
-
+            const fotoImg = document.createElement('img');
+            fotoImg.setAttribute('src','img');
+            contAutor.appendChild(fotoImg);
 
             contenedor.appendChild(contAutor);
         })

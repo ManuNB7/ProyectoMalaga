@@ -14,40 +14,41 @@ export class VistaListarLibro extends Vista {
     // Crea una instancia del ModeloLibro
     this.modeloLibro = new ModeloLibro();
   }
+  
   listar = (datosLibros) => {
-    const cuerpoTablaLibros = document.getElementById("contenedorLibros");
+      const cuerpoTablaLibros = document.getElementById("contenedorLibros");
 
-    // Verificar si el elemento existe antes de intentar acceder a él
-    if (!cuerpoTablaLibros) {
-        console.error("Elemento cuerpoTablaLibros no encontrado.");
-        return;
-    }
+      // Verificar si el elemento existe antes de intentar acceder a él
+      if (!cuerpoTablaLibros) {
+      console.error("Elemento cuerpoTablaLibros no encontrado.");
+      return;
+      }
 
-    // Limpiar la tabla antes de agregar nuevos datos
-    cuerpoTablaLibros.innerHTML = "";
+      // Limpiar la tabla antes de agregar nuevos datos
+      cuerpoTablaLibros.innerHTML = "";
 
-    // Iterar sobre los datos y agregar filas a la tabla
-    datosLibros.forEach(libro => {
-      const fila = document.createElement("tr");
+      // Iterar sobre los datos y agregar filas a la tabla
+      datosLibros.forEach(libro => {
+        const fila = document.createElement("tr");
 
-      // Agregar celdas con los datos del libro
-      const celdaTitulo = document.createElement("td");
-      celdaTitulo.textContent = libro.titulo;
-      fila.appendChild(celdaTitulo);
+        // Agregar celdas con los datos del libro
+        const celdaTitulo = document.createElement("td");
+        celdaTitulo.textContent = libro.titulo;
+        fila.appendChild(celdaTitulo);
 
-      const celdaFecha = document.createElement("td");
-      celdaFecha.textContent = libro.fechaPublicacion;
-      fila.appendChild(celdaFecha);
+        const celdaFecha = document.createElement("td");
+        celdaFecha.textContent = libro.fechaPublicacion;
+        fila.appendChild(celdaFecha);
 
-      const celdaResena = document.createElement("td");
-      celdaResena.textContent = libro.resena;
-      fila.appendChild(celdaResena);
+        const celdaResena = document.createElement("td");
+        celdaResena.textContent = libro.resena;
+        fila.appendChild(celdaResena);
 
-      // Agregar más celdas según las propiedades del libro
+        // Agregar más celdas según las propiedades del libro
 
-      // Agregar la fila a la tabla
-      cuerpoTablaLibros.appendChild(fila);
-    });
+        // Agregar la fila a la tabla
+        cuerpoTablaLibros.appendChild(fila);
+      });
   }
 
   buscar = () => {
