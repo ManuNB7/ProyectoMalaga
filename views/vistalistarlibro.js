@@ -16,19 +16,27 @@ export class VistaListarLibro extends Vista {
   }
   
   listar = (datosLibros) => {
-      const cuerpoTablaLibros = document.getElementById("contenedorLibros");
+    const cuerpoTablaLibros = document.getElementById("contenedorLibros");
 
-      // Verificar si el elemento existe antes de intentar acceder a él
-      if (!cuerpoTablaLibros) {
-      console.error("Elemento cuerpoTablaLibros no encontrado.");
-      return;
-      }
+    // Verificar si el elemento existe antes de intentar acceder a él
+    if (!cuerpoTablaLibros) {
+        console.error("Elemento cuerpoTablaLibros no encontrado.");
+        return;
+    }
 
-      // Limpiar la tabla antes de agregar nuevos datos
-      cuerpoTablaLibros.innerHTML = "";
+    // Limpiar la tabla antes de agregar nuevos datos
+    cuerpoTablaLibros.innerHTML = "";
 
-      // Iterar sobre los datos y agregar filas a la tabla
-      datosLibros.forEach(libro => {
+    // Verificar si hay libros para mostrar
+    if (datosLibros.length === 0) {
+        const mensajeNoLibros = document.createElement("p");
+        mensajeNoLibros.textContent = "No hay libros disponibles.";
+        cuerpoTablaLibros.appendChild(mensajeNoLibros);
+        return;
+    }
+
+    // Iterar sobre los datos y agregar filas a la tabla
+    datosLibros.forEach(libro => {
         const fila = document.createElement("tr");
 
         // Agregar celdas con los datos del libro
@@ -48,8 +56,8 @@ export class VistaListarLibro extends Vista {
 
         // Agregar la fila a la tabla
         cuerpoTablaLibros.appendChild(fila);
-      });
-  }
+    });
+}
 
   buscar = () => {
     // Implementa la lógica para buscar libros.
@@ -101,5 +109,6 @@ export class VistaListarLibro extends Vista {
     } catch (error) {
         console.error('Error al parsear la respuesta JSON:', error);
     }
-}
+  }
+  
 }
