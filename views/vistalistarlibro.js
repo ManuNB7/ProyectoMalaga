@@ -68,9 +68,9 @@ export class VistaListarLibro extends Vista {
     // Implementa la lógica para buscar libros.
   }
 
-  eliminar = () => {
+  eliminar = (obraId) => {
     // Implementa la lógica para eliminar obras.
-    ModeloLibro.borrarAutor(obraId)
+    ModeloLibro.borrarObra(obraId);
   }
 
   irAAutores = () => {

@@ -9,7 +9,7 @@ export class ModeloLibro {
    * Obtiene la lista de libros desde el servidor.
    * @returns {Promise<Array>} - Promesa que resuelve a un array de libros.
    */
-  obtenerLibros() {
+  obtenerLibros() { 
     return fetch('https://migueljaque.com/fanlib/v1/obra')
       .then(respuesta => respuesta.json())
       .then(libros => {
@@ -51,6 +51,10 @@ export class ModeloLibro {
     if (infoUltimaVisita) {
       infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
     }
+  }
+
+  borrarObra(id){
+    Rest.delete('https://migueljaque.com/fanlib/v1/obra/'+id,this.resultadoAJAX)
   }
 
 }
