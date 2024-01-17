@@ -20,7 +20,9 @@ export class VistaAltaAutor extends Vista{
     /**
      * Valida los campos del formulario
      */
-    validar = () => {}
+    validar = () => {
+        return true
+    }
 
     /**
      * Solicita al servidor la creación del autor
@@ -38,7 +40,7 @@ export class VistaAltaAutor extends Vista{
         let imagenautorInput = document.getElementById('imagenautorInput');
         let fotoBase64 = null;
     
-        if (imagenautorInput.files.length > 0) {
+        if (imagenautorInput.files.length > 0 &&    this.validar()) {
             const file = imagenautorInput.files[0];
             const reader = new FileReader();
     
@@ -56,24 +58,12 @@ export class VistaAltaAutor extends Vista{
                 };
     
                 ModeloAutor.guardarAutor(params);
+                this.controlador.irAVista(this.controlador.vistaListarAutor)
             };
     
             reader.readAsDataURL(file);
-        } else {
-            console.log("No hay imagen")
-            const params = {
-                "nombre": nombre,
-                "fecha_nac": fechanacimiento,
-                "fecha_muerte": fechafallecimiento,
-                "nacionalidad": nacionalidad,
-                "biografia": biografia,
-                "foto": "fotoBase64"
-            };
-
-            ModeloAutor.guardarAutor(params);
-        }
+        } 
     }
-    
     resultadoAJAX = (objeto) => {
         console.log(objeto);
         

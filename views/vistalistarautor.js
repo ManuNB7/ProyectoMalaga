@@ -16,6 +16,7 @@ export class VistaListarAutor extends Vista{
      */
     listar = (datosAutores) => {
         const contenedor = document.getElementById('contenedorAutor');
+        
         //vaciar el contenedor de todos los autores
         contenedor.innerHTML = '';
 
@@ -46,7 +47,7 @@ export class VistaListarAutor extends Vista{
             contAutor.appendChild(nacionalidadP);
         
             const fotoImg = document.createElement('img');
-            fotoImg.setAttribute('src', img); // Asignar la fuente de la imagen
+            fotoImg.setAttribute('src', 'data:image/png;base64,'+img); // Asignar la fuente de la imagen
             contAutor.appendChild(fotoImg);
         
             const btnBorrar = document.createElement("button");
@@ -54,7 +55,8 @@ export class VistaListarAutor extends Vista{
         
             // Asignar una función onclick con el ID del autor
             btnBorrar.onclick = () => {
-                this.eliminar(autorId);
+                this.eliminar(autorId)
+                this.controlador.irAVista(this.controlador.vistaListarAutor)
             };
         
             contAutor.appendChild(btnBorrar);

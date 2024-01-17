@@ -4,7 +4,7 @@ export class ModeloAutor {
       
     }
     static guardarAutor(nuevoAutor) {
-      Rest.post('https://migueljaque.com/fanlib/v1/autor', nuevoAutor, this.resultadoAJAX);
+      Rest.post('https://migueljaque.com/fanlib/v1/autor', nuevoAutor, this.resultadoAJAX)
     }
     static borrarAutor(id){
       Rest.delete('https://migueljaque.com/fanlib/v1/autor/'+id,this.resultadoAJAX)

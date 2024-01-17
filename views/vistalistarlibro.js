@@ -18,12 +18,6 @@ export class VistaListarLibro extends Vista {
   listar = (datosLibros) => {
     const cuerpoTablaLibros = document.getElementById("contenedorLibros");
 
-    // Verificar si el elemento existe antes de intentar acceder a él
-    if (!cuerpoTablaLibros) {
-        console.error("Elemento cuerpoTablaLibros no encontrado.");
-        return;
-    }
-
     // Limpiar la tabla antes de agregar nuevos datos
     cuerpoTablaLibros.innerHTML = "";
 
@@ -36,26 +30,37 @@ export class VistaListarLibro extends Vista {
     }
 
     // Iterar sobre los datos y agregar filas a la tabla
-    datosLibros.forEach(libro => {
-        const fila = document.createElement("tr");
+    datosLibros.forEach(obra => {
 
-        // Agregar celdas con los datos del libro
-        const celdaTitulo = document.createElement("td");
-        celdaTitulo.textContent = libro.titulo;
-        fila.appendChild(celdaTitulo);
+      let obraId = obra.id; // Obtener el ID de la obra
+      const divLibro = document.createElement("div");
+      divLibro.classList.add("contenedor");
+      
+      const pTitulo = document.createElement("p");
+      pTitulo.textContent = obra.titulo;
+      divLibro.appendChild(pTitulo);
 
-        const celdaFecha = document.createElement("td");
-        celdaFecha.textContent = libro.fechaPublicacion;
-        fila.appendChild(celdaFecha);
+      const resena = document.createElement("p");
+      resena.textContent = obra.resena;
+      divLibro.appendChild(resena);
+      
+      const imgPortada = document.createElement("img");
+      imgPortada.src = obra.portada; // Ajusta esto según cómo estén estructurados los datos
+      divLibro.appendChild(imgPortada);
+      
+      const btnBorrar = document.createElement("button");
+      btnBorrar.textContent = "Borrar";
+      divLibro.appendChild(btnBorrar);
 
-        const celdaResena = document.createElement("td");
-        celdaResena.textContent = libro.resena;
-        fila.appendChild(celdaResena);
+      // Asignar una función onclick con el ID del autor
+      btnBorrar.onclick = () => {
+        this.eliminar(obraId)
+        this.controlador.irAVista(this.controlador.vistaListarLibro)
+    };
 
-        // Agregar más celdas según las propiedades del libro
+      divLibro.appendChild(btnBorrar);
 
-        // Agregar la fila a la tabla
-        cuerpoTablaLibros.appendChild(fila);
+      contenedorLibros.appendChild(divLibro);
     });
 }
 
@@ -64,7 +69,8 @@ export class VistaListarLibro extends Vista {
   }
 
   eliminar = () => {
-    // Implementa la lógica para eliminar libros.
+    // Implementa la lógica para eliminar obras.
+    ModeloLibro.borrarAutor(obraId)
   }
 
   irAAutores = () => {
@@ -79,41 +85,10 @@ export class VistaListarLibro extends Vista {
   // Después de realizar la llamada AJAX en tu método llamadaAJAX:
   llamadaAJAX = () => {
     const url = 'https://migueljaque.com/fanlib/v1/obra';
-    Rest.get(url, this.resultadoAJAX);
+    Rest.get(url, this.listar);
   }
 
-  resultadoAJAX = (obras) => {
-    try {
-        // Llama al método listar para mostrar las obras en la tabla
-        this.listar(obras);
-
-        // Muestra las obras en el contenedorLibros
-        const contenedorLibros = document.getElementById("contenedorLibros");
-        obras.forEach(libro => {
-            const divLibro = document.createElement("div");
-            divLibro.classList.add("contenedor");
-            
-            const pTitulo = document.createElement("p");
-            pTitulo.textContent = libro.titulo;
-            divLibro.appendChild(pTitulo);
-            
-            const imgPortada = document.createElement("img");
-            imgPortada.src = libro.portada; // Ajusta esto según cómo estén estructurados los datos
-            divLibro.appendChild(imgPortada);
-            
-            const btnBorrar = document.createElement("button");
-            btnBorrar.textContent = "Borrar";
-            divLibro.appendChild(btnBorrar);
-
-            contenedorLibros.appendChild(divLibro);
-        });
-
-        // Deja la línea que imprime en la consola si la necesitas
-        console.log(obras);
-    } catch (error) {
-        console.error('Error al parsear la respuesta JSON:', error);
-    }
-  }
+  
 
   mostrarInformacionUltimaVisita(ultimaVisita) {
     const infoUltimaVisita = document.getElementById('infoUltimaVisita');

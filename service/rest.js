@@ -79,7 +79,7 @@ export class Rest {
         if (callback) { callback(); }
       })
       .catch(error => {
-        console.error('Error en la solicitud DELETE:', error);
+        console.log('Error en la solicitud DELETE:', error);
       });
   }
 }

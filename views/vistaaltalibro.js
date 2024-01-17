@@ -11,12 +11,6 @@ export class VistaAltaLibro extends Vista{
 
         this.btnaltaautor.onclick = this.irAutor;
         this.btnenviar.onclick = this.insertar;
-
-        this.tituloInput = document.getElementById('tituloInput');
-        this.fechaPublicacionInput = document.getElementById('fechaPublicacionInput');
-        this.resenaInput = document.getElementById('resenaInput');
-        this.generoInput = document.getElementById('generoInput');
-        this.portadaInput = document.getElementById('portadaInput');
     }
     irAutor = () => {
         this.controlador.irAVista(this.controlador.vistaAltaAutor)
@@ -25,30 +19,25 @@ export class VistaAltaLibro extends Vista{
     /**
      * Valida los campos del formulario
      */
-    validar = () => {
+    validar(){
+        const tituloInput = document.getElementById('tituloInput');
+        const fechaPublicacionInput = document.getElementById('fechaPublicacionInput');
+        const portadaInput = document.getElementById('portadaInput');
+
         let sw = true;
         const hoy = new Date();
-        const fechaPublicacion = new Date(this.fechaPublicacionInput.value);
-        if(!hoy>fechaPublicacion){
+        const fechaPublicacion = new Date(fechaPublicacionInput.value);
+        if(!(hoy>fechaPublicacion)){
             sw=false;
-            this.fechaPublicacionInput.style.borderColor = 'red';
+            fechaPublicacionInput.style.borderColor = 'red';
         }
-        const extensionesPermitidas = ['jpg', 'jpeg', 'png', 'gif'];
-        //pop() devuelve el último elemento del array
-        const extension = archivo.name.split('.').pop().toLowerCase();
-        if(!this.portadaInput.value || extensionesPermitidas.includes(extension)){
+        if(!portadaInput.value){
             sw=false;
-            this.portadaInput.style.borderColor = 'red';
+            portadaInput.style.borderColor = 'red';
         }
-        if(!this.tituloInput.value){
+        if(!tituloInput.value){
             sw=false;
-            this.tituloInput.style.borderColor = 'red';
-        }
-
-        if(sw){
-            this.fechaPublicacionInput.style.borderColor = 'green';
-            this.portadaInput.style.borderColor = 'green';
-            this.tituloInput.style.borderColor = 'green';
+            tituloInput.style.borderColor = 'red';
         }
         return sw;
     }
@@ -57,14 +46,22 @@ export class VistaAltaLibro extends Vista{
      * Solicita al servidor la creación del libro
      */
     insertar = (event) => {
+        const tituloInput = document.getElementById('tituloInput');
+        const fechaPublicacionInput = document.getElementById('fechaPublicacionInput');
+        const resenaInput = document.getElementById('resenaInput');
+        const generoInput = document.getElementById('generoInput');
+        const portadaInput = document.getElementById('portadaInput');
+        let foto = portadaInput.files[0];
+
         event.preventDefault()
-        if(this.validar){
-            let titulo = this.tituloInput.value;
-            let fechaPublicacion = this.fechaPublicacionInput.value;
-            let resena = this.resenaInput.value;
-            let genero = this.generoInput.value;
-            
-            let foto = this.portadaInput.files[0];
+
+        if(this.validar()){
+            let titulo = tituloInput.value;
+            let fechaPublicacion = fechaPublicacionInput.value;
+            let resena = resenaInput.value;
+            let genero = generoInput.value;
+
+            this.borrarDatos();
         
             let reader = new FileReader();
             // Leer la imagen como base64
@@ -96,5 +93,25 @@ export class VistaAltaLibro extends Vista{
         if (infoUltimaVisita) {
           infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
         }
+    }
+
+    borrarDatos(){
+        const tituloInput = document.getElementById('tituloInput');
+        const fechaPublicacionInput = document.getElementById('fechaPublicacionInput');
+        const resenaInput = document.getElementById('resenaInput');
+        const generoInput = document.getElementById('generoInput');
+        const portadaInput = document.getElementById('portadaInput');
+
+        tituloInput.value='';
+        fechaPublicacionInput.value='';
+        resenaInput.value='';
+        generoInput.value='';
+        portadaInput.value='';
+    
+        fechaPublicacionInput.style.borderColor = 'gray';
+        portadaInput.style.borderColor = 'gray';
+        tituloInput.style.borderColor = 'gray';
+        resenaInput.style.borderColor = 'gray';
+        generoInput.style.borderColor = 'gray';
     }
 }

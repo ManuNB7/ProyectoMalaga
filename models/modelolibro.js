@@ -46,5 +46,11 @@ export class ModeloLibro {
       });
   }
 
-  // Puedes agregar más métodos según las operaciones que necesites realizar con los libros.
+  mostrarInformacionUltimaVisita(ultimaVisita) {
+    const infoUltimaVisita = document.getElementById('infoUltimaVisita');
+    if (infoUltimaVisita) {
+      infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
+    }
+  }
+
 }

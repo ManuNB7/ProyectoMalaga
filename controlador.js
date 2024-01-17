@@ -2,6 +2,7 @@ import { VistaAltaLibro } from './views/vistaaltalibro.js'
 import { VistaAltaAutor } from './views/vistaaltaautor.js'
 import { VistaListarLibro } from './views/vistalistarlibro.js'
 import { VistaListarAutor } from './views/vistalistarautor.js'
+import { VistaEditarAutor } from './views/vistaeditarautor.js'
 import { VistaInicio } from './views/vistainicio.js'
 import { ModeloLibro } from './models/modelolibro.js'
 import { ModeloAutor } from './models/modeloautor.js'
@@ -12,6 +13,7 @@ class Controlador {
       const divaltalibro = document.getElementById("vistaaltalibro");
       const divlistarautor = document.getElementById("vistalistarautor");
       const divlistarlibro = document.getElementById("vistalistarlibro");
+      const diveditarautor = document.getElementById("vistaeditarautor");
       
 
       this.vistaInicio = new VistaInicio(this, divinicio);
@@ -19,10 +21,11 @@ class Controlador {
       this.vistaAltaLibro = new VistaAltaLibro(this, divaltalibro);
       this.vistaListarAutor = new VistaListarAutor(this, divlistarautor);
       this.vistaListarLibro = new VistaListarLibro(this, divlistarlibro);
+      this.VistaEditarAutor = new VistaEditarAutor(this, diveditarautor);
       this.modeloAutor = new ModeloAutor();
       this.modeloLibro = new ModeloLibro();
 
-      this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio];
+      this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio,this.VistaEditarAutor];
 
       // Establecer cookie al cargar la página
       this.establecerCookieUltimaVisita();
@@ -68,7 +71,7 @@ class Controlador {
       vista.mostrar(true);
       if(vista==this.vistaListarLibro){
         this.vistaListarLibro.llamadaAJAX()
-        this.mostrarInformacionUltimaVisitaEnVistas();
+        //this.mostrarInformacionUltimaVisitaEnVistas();
       }
       if(vista==this.vistaListarAutor){
         this.vistaListarAutor.llamadaAJAX()
