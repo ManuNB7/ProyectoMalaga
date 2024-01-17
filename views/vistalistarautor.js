@@ -10,7 +10,30 @@ export class VistaListarAutor extends Vista{
         this.btnlistarlibro = document.getElementById("btnlistarlibros");
         this.btnlistarlibro.onclick = this.irALibros;
 
+        this.btnBorrarSeleccionados = document.getElementById("btnBorrarSeleccionados");
+        this.btnBorrarSeleccionados.onclick = this.borrarAutoresSeleccionados;
     }
+
+    borrarAutoresSeleccionados = () => {
+        const checkboxes = document.getElementsByClassName("checkboxAutor");
+        const autoresSeleccionados = [];
+  
+        for (const checkbox of checkboxes) {
+           if (checkbox.checked) {
+              autoresSeleccionados.push(checkbox.dataset.idAutor);
+           }
+        }
+  
+        this.controlador.eliminarVarios(autoresSeleccionados);
+        this.controlador.irAVista(this.controlador.vistaListarAutor); // Opcional: Regresar a la vista de listado de autores después de borrar
+     };
+
+     eliminarVarios = (autorIds) => {
+        // Utiliza el método borrarAutor de ModeloAutor para cada ID de autor
+        autorIds.forEach(autorId => {
+            ModeloAutor.borrarAutor(autorId);
+        });
+    };
     /**
      * Obtiene la lista de autores y la muestra
      */
