@@ -22,11 +22,11 @@ class Controlador {
       this.vistaAltaLibro = new VistaAltaLibro(this, divaltalibro);
       this.vistaListarAutor = new VistaListarAutor(this, divlistarautor);
       this.vistaListarLibro = new VistaListarLibro(this, divlistarlibro);
-      this.VistaEditarAutor = new VistaEditarAutor(this, diveditarautor);
+      this.vistaEditarAutor = new VistaEditarAutor(this, diveditarautor);
       this.modeloAutor = new ModeloAutor();
       this.modeloLibro = new ModeloLibro();
 
-      this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio,this.VistaEditarAutor];
+      this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio,this.vistaEditarAutor];
 
       // Establecer cookie al cargar la página
       this.establecerCookieUltimaVisita();

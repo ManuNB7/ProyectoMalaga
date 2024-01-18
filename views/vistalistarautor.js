@@ -56,6 +56,9 @@ export class VistaListarAutor extends Vista{
             const btnBorrar = document.createElement("button");
             btnBorrar.textContent = "Borrar";
 
+            const btnEditar = document.createElement("button");
+            btnEditar.textContent = "Editar";
+
             const checkBorrar = document.createElement("input");
             checkBorrar.type = 'checkbox';
             checkBorrar.value = autor.id;
@@ -67,8 +70,14 @@ export class VistaListarAutor extends Vista{
                 this.eliminar(autorId)
                 this.controlador.irAVista(this.controlador.vistaListarAutor)
             };
+            btnEditar.onclick = () => {
+              
+              this.controlador.irAVista(this.controlador.vistaEditarAutor)
+            }
         
             contAutor.appendChild(btnBorrar);
+
+            contAutor.appendChild(btnEditar);
         
             contenedor.appendChild(contAutor);
         });
