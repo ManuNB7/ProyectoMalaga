@@ -1,5 +1,5 @@
 import { Vista } from './vista.js'
-import { Rest } from '../service/rest.js'
+import { ModeloLibro } from '../models/modelolibro.js'
 export class VistaAltaLibro extends Vista{
     constructor (controlador,base) {
         super(controlador,base)
@@ -78,8 +78,7 @@ export class VistaAltaLibro extends Vista{
                     "portada": fotoBase64,
                     "genero": parseInt(genero),
                 };
-                const url = 'https://migueljaque.com/fanlib/v1/obra';
-                Rest.post(url, params, this.resultadoAJAX);
+                ModeloLibro.guardarObra(params)
             }
         }
     }

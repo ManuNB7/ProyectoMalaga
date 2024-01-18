@@ -6,11 +6,8 @@ export class ModeloLibro {
     // Inicializa las propiedades del modelo de libros, si es necesario.
   }
 
-  mostrarInformacionUltimaVisita(ultimaVisita) {
-    const infoUltimaVisita = document.getElementById('infoUltimaVisita');
-    if (infoUltimaVisita) {
-      infoUltimaVisita.textContent = "Última visita: " + ultimaVisita;
-    }
+  static guardarObra(nuevaObra) {
+    Rest.post('https://migueljaque.com/fanlib/v1/obra', nuevaObra, this.resultadoAJAX)
   }
 
   static borrarObra(id){
