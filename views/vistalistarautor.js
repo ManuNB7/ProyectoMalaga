@@ -10,30 +10,10 @@ export class VistaListarAutor extends Vista{
         this.btnlistarlibro = document.getElementById("btnlistarlibros");
         this.btnlistarlibro.onclick = this.irALibros;
 
-        this.btnBorrarSeleccionados = document.getElementById("btnBorrarSeleccionados");
-        this.btnBorrarSeleccionados.onclick = this.borrarAutoresSeleccionados;
+        this.btnBorrarMultiple = document.getElementById("btnBorrarMultipleAutor");
+        this.btnBorrarMultiple.onclick = this.eliminarMultiple;
     }
 
-    borrarAutoresSeleccionados = () => {
-        const checkboxes = document.getElementsByClassName("checkboxAutor");
-        const autoresSeleccionados = [];
-  
-        for (const checkbox of checkboxes) {
-           if (checkbox.checked) {
-              autoresSeleccionados.push(checkbox.dataset.idAutor);
-           }
-        }
-  
-        this.controlador.eliminarVarios(autoresSeleccionados);
-        this.controlador.irAVista(this.controlador.vistaListarAutor); // Opcional: Regresar a la vista de listado de autores después de borrar
-     };
-
-     eliminarVarios = (autorIds) => {
-        // Utiliza el método borrarAutor de ModeloAutor para cada ID de autor
-        autorIds.forEach(autorId => {
-            ModeloAutor.borrarAutor(autorId);
-        });
-    };
     /**
      * Obtiene la lista de autores y la muestra
      */
@@ -75,6 +55,12 @@ export class VistaListarAutor extends Vista{
         
             const btnBorrar = document.createElement("button");
             btnBorrar.textContent = "Borrar";
+
+            const checkBorrar = document.createElement("input");
+            checkBorrar.type = 'checkbox';
+            checkBorrar.value = autor.id;
+            checkBorrar.classList.add("multiple");
+            contAutor.appendChild(checkBorrar);
         
             // Asignar una función onclick con el ID del autor
             btnBorrar.onclick = () => {
@@ -99,6 +85,21 @@ export class VistaListarAutor extends Vista{
     eliminar = (autorId) => {
         ModeloAutor.borrarAutor(autorId)
     };
+
+    eliminarMultiple = () => {
+        const autores = document.getElementsByClassName('multiple');
+        const checkboxes = Array.from(autores);
+        const checkboxesSeleccionados = [];
+        checkboxes.forEach(autor => {
+          if(autor.checked){
+            checkboxesSeleccionados.push(autor);
+          }
+        })
+        checkboxesSeleccionados.forEach(autor => {
+          ModeloAutor.borrarAutor(autor.value);
+        })
+            
+      }
 
     /**
      * Solicita al Controlador el cambio de vista a listar libros

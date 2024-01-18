@@ -10,6 +10,9 @@ export class VistaListarLibro extends Vista {
 
     this.btnlistarautor = document.getElementById("btnlistarautores");
     this.btnlistarautor.onclick = this.irAAutores;
+    
+    this.btnBorrarMultiple = document.getElementById("btnBorrarMultipleObra");
+    this.btnBorrarMultiple.onclick = this.eliminarMultiple;
 
     // Crea una instancia del ModeloLibro
     this.modeloLibro = new ModeloLibro();
@@ -52,10 +55,16 @@ export class VistaListarLibro extends Vista {
       btnBorrar.textContent = "Borrar";
       divLibro.appendChild(btnBorrar);
 
+      const checkBorrar = document.createElement("input");
+      checkBorrar.type = 'checkbox';
+      checkBorrar.value = obra.id;
+      checkBorrar.classList.add("multiple");
+      divLibro.appendChild(checkBorrar);
+
       // Asignar una función onclick con el ID del autor
       btnBorrar.onclick = () => {
-        this.eliminar(obraId)
-        this.controlador.irAVista(this.controlador.vistaListarLibro)
+        this.eliminar(obraId);
+        this.controlador.irAVista(this.controlador.vistaListarLibro);
     };
 
       divLibro.appendChild(btnBorrar);
@@ -71,6 +80,21 @@ export class VistaListarLibro extends Vista {
   eliminar = (obraId) => {
     // Implementa la lógica para eliminar obras.
     ModeloLibro.borrarObra(obraId);
+  }
+
+  eliminarMultiple = () => {
+    const obras = document.getElementsByClassName('multiple');
+    const checkboxes = Array.from(obras);
+    const checkboxesSeleccionados = [];
+    checkboxes.forEach(obra => {
+      if(obra.checked){
+        checkboxesSeleccionados.push(obra);
+      }
+    })
+    checkboxesSeleccionados.forEach(obra => {
+      ModeloLibro.borrarObra(obra.value);
+    })
+        
   }
 
   irAAutores = () => {
