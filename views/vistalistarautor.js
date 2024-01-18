@@ -72,6 +72,7 @@ export class VistaListarAutor extends Vista{
             };
             
             btnEditar.onclick = () => {
+              this.cargarDatosAutor(autor)
               this.controlador.irAVista(this.controlador.vistaEditarAutor, { idAutor: autorId });
           };
         
@@ -122,6 +123,16 @@ export class VistaListarAutor extends Vista{
      * Marca y desmarca el autor como favorito del usuario
      */
     marcarFavorito = () => {};
+
+    cargarDatosAutor = (datosAutor) => {
+      // Asignar los valores a los campos del formulario
+      document.getElementById('idAutorInputE').value = datosAutor.id;
+      document.getElementById('nombreInputE').value = datosAutor.nombre;
+      document.getElementById('fechanacimientoInputE').value = datosAutor.fecha_nac;
+      document.getElementById('fechafallecimientoInputE').value = datosAutor.fecha_muerte;
+      document.getElementById('nacionalidadInputE').value = datosAutor.nacionalidad;
+      document.getElementById('biografiaInputE').value = datosAutor.biografia;
+  }
 
     llamadaAJAX = () => {
         const url = 'https://migueljaque.com/fanlib/v1/autor';

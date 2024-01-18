@@ -7,10 +7,8 @@ export class VistaEditarAutor extends Vista {
         this.base = base;
         this.controlador = controlador;
 
-        //this.btnmodautor = document.getElementById("btnmodautor");
         this.btnenviar = document.getElementById("enviarautor2");
 
-        //this.btnmodautor.onclick = this.irLibro;
         this.btnenviar.onclick = this.insertar;
     }
 
@@ -18,15 +16,12 @@ export class VistaEditarAutor extends Vista {
         this.controlador.irAVista(this.controlador.vistaEditarAutor);
     }
 
-    cargarDatosAutor = (datosAutor) => {
-        // Asignar los valores a los campos del formulario
-        document.getElementById('idInput').value = datosAutor.id;
-        document.getElementById('nombreInput').value = datosAutor.nombre;
-        document.getElementById('fechanacimientoInput').value = datosAutor.fecha_nac;
-        document.getElementById('fechafallecimientoInput').value = datosAutor.fecha_muerte;
-        document.getElementById('nacionalidadInput').value = datosAutor.nacionalidad;
-        document.getElementById('biografiaInput').value = datosAutor.biografia;
-    }
+    /**
+     * Valida los campos del formulario
+     */
+    validar = () => {
+      return true
+  }
 
     /**
      * Solicita al servidor la creación o modificación del autor
@@ -34,8 +29,9 @@ export class VistaEditarAutor extends Vista {
     insertar = (event) => {
       event.preventDefault();
 
-      // HAY QUE OBTENER EL ID
-      let id = "";
+      // Obtén el ID del autor desde los parámetros
+      // Obtén el ID del autor desde los parámetros
+      let id = this.params.idAutor;
 
       // Obtener los valores de los campos del formulario
       let nombre = document.getElementById('nombreInput').value;
@@ -65,14 +61,8 @@ export class VistaEditarAutor extends Vista {
                   "foto": fotoBase64
               };
 
-              // Verificar si se proporciona un ID de autor
-              if (id) {
-                  // Es una modificación, llamar al método de actualización
-                  this.actualizarAutor(id, params);
-              } else {
-                  // Es una creación, llamar al método de creación
-                  this.crearNuevoAutor(params);
-              }
+              ModeloAutor.actualizarAutor(params);
+              this.controlador.irAVista(this.controlador.vistaListarAutor)
           };
 
           reader.readAsDataURL(file);
