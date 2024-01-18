@@ -70,16 +70,17 @@ export class VistaListarAutor extends Vista{
                 this.eliminar(autorId)
                 this.controlador.irAVista(this.controlador.vistaListarAutor)
             };
+            
             btnEditar.onclick = () => {
-              
-              this.controlador.irAVista(this.controlador.vistaEditarAutor)
-            }
+              this.controlador.irAVista(this.controlador.vistaEditarAutor, { idAutor: autorId });
+          };
         
             contAutor.appendChild(btnBorrar);
 
             contAutor.appendChild(btnEditar);
         
             contenedor.appendChild(contAutor);
+            
         });
     };
     /**

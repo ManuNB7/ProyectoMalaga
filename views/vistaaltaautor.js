@@ -1,5 +1,6 @@
 import { Vista } from './vista.js'
 import { ModeloAutor } from '../models/modeloautor.js'
+
 export class VistaAltaAutor extends Vista{
     constructor (controlador,base) {
         super(controlador,base)
