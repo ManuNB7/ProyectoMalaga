@@ -44,13 +44,9 @@ export class Rest {
   }
 
   static put(url, params, callback) {
-    const parametros = new FormData();
-    for (const param in params) {
-      parametros.append(param, params[param]);
-    }
     const opciones = {
       method: 'PUT',
-      body: parametros,
+      body: JSON.stringify(params),
       headers: {
           'Access-Control-Allow-Origin':'*',
         'Fanlibtoken': 'XoutELXK4h'

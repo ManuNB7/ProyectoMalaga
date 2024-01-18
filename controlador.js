@@ -6,6 +6,7 @@ import { VistaEditarAutor } from './views/vistaeditarautor.js'
 import { VistaInicio } from './views/vistainicio.js'
 import { ModeloLibro } from './models/modelolibro.js'
 import { ModeloAutor } from './models/modeloautor.js'
+
 class Controlador {
   constructor() {
       const divinicio = document.getElementById("vistainicio");  

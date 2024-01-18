@@ -1,4 +1,5 @@
 import { Rest } from '../service/rest.js'
+
 export class ModeloAutor {
     constructor () {
       
@@ -9,10 +10,4 @@ export class ModeloAutor {
     static borrarAutor(id){
       Rest.delete('https://migueljaque.com/fanlib/v1/autor/'+id,this.resultadoAJAX)
     }
-
-    // Dentro del ModeloAutor
-  static borrarAutores(autorIds) {
-    Rest.delete('https://migueljaque.com/fanlib/v1/autor/'+id,this.resultadoAJAX)
-
-  }
 }
