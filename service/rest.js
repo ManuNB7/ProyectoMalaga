@@ -48,7 +48,6 @@ export class Rest {
       method: 'PUT',
       body: JSON.stringify(params),
       headers: {
-          'Access-Control-Allow-Origin':'*',
         'Fanlibtoken': 'XoutELXK4h'
       }
     };

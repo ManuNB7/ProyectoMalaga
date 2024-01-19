@@ -12,7 +12,7 @@ export class ModeloAutor {
       Rest.delete('https://migueljaque.com/fanlib/v1/autor/'+id,this.resultadoAJAX)
     }
 
-    static actualizarAutor(id, params) {
-      Rest.put('https://migueljaque.com/fanlib/v1/autor/',+id, params, this.resultadoAJAX);
+    static actualizarAutor(params) {
+      Rest.put('https://migueljaque.com/fanlib/v1/autor/', params, this.resultadoAJAX);
     }
 }

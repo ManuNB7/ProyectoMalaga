@@ -29,19 +29,16 @@ export class VistaEditarAutor extends Vista {
     insertar = (event) => {
       event.preventDefault();
 
-      // Obtén el ID del autor desde los parámetros
-      // Obtén el ID del autor desde los parámetros
-      let id = this.params.idAutor;
-
       // Obtener los valores de los campos del formulario
-      let nombre = document.getElementById('nombreInput').value;
-      let fechanacimiento = document.getElementById('fechanacimientoInput').value;
-      let fechafallecimiento = document.getElementById('fechafallecimientoInput').value;
-      let nacionalidad = document.getElementById('nacionalidadInput').value;
-      let biografia = document.getElementById('biografiaInput').value;
+      let id = document.getElementById('idAutorInputE').value;
+      let nombre = document.getElementById('nombreInputE').value;
+      let fechanacimiento = document.getElementById('fechanacimientoInputE').value;
+      let fechafallecimiento = document.getElementById('fechafallecimientoInputE').value;
+      let nacionalidad = document.getElementById('nacionalidadInputE').value;
+      let biografia = document.getElementById('biografiaInputE').value;
 
       // Obtener la imagen en base64
-      let imagenautorInput = document.getElementById('imagenautorInput');
+      let imagenautorInput = document.getElementById('imagenautorInputE');
       let fotoBase64 = null;
 
       if (imagenautorInput.files.length > 0 && this.validar()) {
@@ -53,13 +50,14 @@ export class VistaEditarAutor extends Vista {
 
               // Continuar con la lógica de la solicitud AJAX
               const params = {
-                  "nombre": nombre,
-                  "fecha_nac": fechanacimiento,
-                  "fecha_muerte": fechafallecimiento,
-                  "nacionalidad": nacionalidad,
-                  "biografia": biografia,
-                  "foto": fotoBase64
-              };
+                    "id": id,
+                    "nombre": nombre,
+                    "fecha_nac": fechanacimiento,
+                    "fecha_muerte": fechafallecimiento,
+                    "nacionalidad": nacionalidad,
+                    "biografia": biografia,
+                    "foto": fotoBase64
+                };
 
               ModeloAutor.actualizarAutor(params);
               this.controlador.irAVista(this.controlador.vistaListarAutor)
