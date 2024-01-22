@@ -132,6 +132,8 @@ export class VistaListarAutor extends Vista{
       document.getElementById('fechafallecimientoInputE').value = datosAutor.fecha_muerte;
       document.getElementById('nacionalidadInputE').value = datosAutor.nacionalidad;
       document.getElementById('biografiaInputE').value = datosAutor.biografia;
+      document.getElementById('imagenAutorE').setAttribute('src', 'data:image/png;base64,'+datosAutor.foto);
+      document.getElementById('imagenAutorImputE')
   }
 
     llamadaAJAX = () => {

@@ -33,7 +33,6 @@ export class Rest {
         'Fanlibtoken': 'XoutELXK4h'
       },
     };
-
     fetch(url, opciones)
       .then(respuesta => {
         if (callback) { callback(); }
