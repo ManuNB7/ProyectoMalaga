@@ -1,5 +1,6 @@
 import { Vista } from './vista.js'
 import { ModeloLibro } from '../models/modelolibro.js'
+import { ModeloAutor } from '../models/modeloautor.js'
 export class VistaAltaLibro extends Vista{
     constructor (controlador,base) {
         super(controlador,base)
@@ -42,6 +43,17 @@ export class VistaAltaLibro extends Vista{
         return sw;
     }
 
+    actualizarSelect(){
+        this.autorSelect = document.getElementById('AutorSelect');
+        ModeloAutor.actualizarLista();
+        ModeloAutor.listaAutores.forEach(autor => {
+            let option = document.createElement('option')
+            option.setAttribute('value', autor[1])
+            option.textContent = autor[0];
+
+            this.autorSelect.appendChild(option);
+        });
+    }
     /**
      * Solicita al servidor la creación del libro
      */
@@ -51,6 +63,7 @@ export class VistaAltaLibro extends Vista{
         const resenaInput = document.getElementById('resenaInput');
         const generoInput = document.getElementById('generoInput');
         const portadaInput = document.getElementById('portadaInput');
+        const autorSelect = document.getElementById('AutorSelect');
         let foto = portadaInput.files[0];
 
         event.preventDefault()
@@ -60,6 +73,7 @@ export class VistaAltaLibro extends Vista{
             let fechaPublicacion = fechaPublicacionInput.value;
             let resena = resenaInput.value;
             let genero = generoInput.value;
+            let autor = autorSelect.option[autorSelect.selectedIndex].value;
 
             this.borrarDatos();
         
@@ -71,7 +85,7 @@ export class VistaAltaLibro extends Vista{
                 // e.target.result contiene el contenido en base64
                 let fotoBase64 = contenidoFoto.target.result;
                 const params = {
-                    "autor_obra":1,
+                    "autor_obra":autor,
                     "titulo": titulo,
                     "fecha_publicacion": fechaPublicacion,
                     "resena": resena,

@@ -32,6 +32,5 @@
 		"borrar_obra": "DELETE FROM Obra WHERE id=:id",
 		"actualizar_autor": "UPDATE Autor SET nombre=:nombre,fecha_nac=:fecha_nac,fecha_muerte=:fecha_muerte,nacionalidad=:nacionalidad,biografia=:biografia,foto=:foto WHERE id=:id",
 		"actualizar_obra": "UPDATE Obra SET titulo=:titulo,fecha_publicacion=:fecha_publicacion,resena=:resena,portada=:portada,genero=:genero WHERE id=:id"
-
 	}
 }

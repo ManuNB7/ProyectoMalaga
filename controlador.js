@@ -45,7 +45,6 @@ class Controlador {
     console.log("Método establecerCookieUltimaVisita llamado");
     // Obtener la fecha y hora actual
     const fechaHoraActual = new Date();
-
     // Convertir a cadena en formato ISO
     const cadenaFechaHora = fechaHoraActual.toLocaleString();
 
@@ -69,20 +68,20 @@ class Controlador {
 
   irAVista(vista) {
       this.ocultarVistas();
+      this.vistaListarAutor.llamadaAJAX()
       vista.mostrar(true);
       if(vista==this.vistaListarLibro){
         this.vistaListarLibro.llamadaAJAX()
-        //this.mostrarInformacionUltimaVisitaEnVistas();
       }
-      if(vista==this.vistaListarAutor){
-        this.vistaListarAutor.llamadaAJAX()
+      if(vista==this.vistaAltaLibro){
+        this.vistaAltaLibro.actualizarSelect()
       }
-
       // Mostrar la información de la última visita al cambiar de vista
       this.mostrarInformacionUltimaVisitaEnVistas();
   }
   
 }
+
 
 
 

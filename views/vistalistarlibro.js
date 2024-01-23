@@ -39,6 +39,12 @@ export class VistaListarLibro extends Vista {
       const divLibro = document.createElement("div");
       divLibro.classList.add("contenedor");
       
+      const checkFav = document.createElement("input");
+      checkFav.type = 'checkbox';
+      checkFav.value = obra.id;
+      checkFav.classList.add("favorito");
+      divLibro.appendChild(checkFav);
+
       const pTitulo = document.createElement("p");
       pTitulo.textContent = obra.titulo;
       divLibro.appendChild(pTitulo);

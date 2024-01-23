@@ -139,6 +139,7 @@ export class VistaListarAutor extends Vista{
     llamadaAJAX = () => {
         const url = 'https://migueljaque.com/fanlib/v1/autor';
         Rest.get(url, this.listar);
+        ModeloAutor.actualizarLista(url);
     }
 
     mostrarInformacionUltimaVisita(ultimaVisita) {
