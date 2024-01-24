@@ -73,7 +73,7 @@ export class VistaAltaLibro extends Vista{
             let fechaPublicacion = fechaPublicacionInput.value;
             let resena = resenaInput.value;
             let genero = generoInput.value;
-            let autor = autorSelect.option[autorSelect.selectedIndex].value;
+            let autor = autorSelect.options[autorSelect.selectedIndex].value;
 
             this.borrarDatos();
         

@@ -1,13 +1,14 @@
 import { Vista } from './vista.js'
 import { ModeloAutor } from '../models/modeloautor.js'
+import { ModeloLibro } from '../models/modelolibro.js'
 
-export class VistaEditarAutor extends Vista {
+export class VistaEditarObra extends Vista {
     constructor(controlador, base) {
         super(controlador, base);
         this.base = base;
         this.controlador = controlador;
 
-        this.btnenviar = document.getElementById("enviarautor2");
+        this.btnenviar = document.getElementById("enviarlibro2");
 
         this.btnenviar.onclick = this.insertar;
     }
@@ -67,8 +68,8 @@ export class VistaEditarAutor extends Vista {
             "foto": fotoBase64
         };
 
-        ModeloAutor.actualizarAutor(params);
-        this.controlador.irAVista(this.controlador.vistaListarAutor)
+        ModeloLibro.actualizarAutor(params);
+        this.controlador.irAVista(this.controlador.vistaListarLibro)
     }
 
     mostrarInformacionUltimaVisita(ultimaVisita) {

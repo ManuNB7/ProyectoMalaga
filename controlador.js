@@ -2,6 +2,7 @@ import { VistaAltaLibro } from './views/vistaaltalibro.js'
 import { VistaAltaAutor } from './views/vistaaltaautor.js'
 import { VistaListarLibro } from './views/vistalistarlibro.js'
 import { VistaListarAutor } from './views/vistalistarautor.js'
+import { VistaEditarObra } from './views/vistaeditarobra.js'
 import { VistaEditarAutor } from './views/vistaeditarautor.js'
 import { VistaInicio } from './views/vistainicio.js'
 import { ModeloLibro } from './models/modelolibro.js'
@@ -14,6 +15,7 @@ class Controlador {
       const divaltalibro = document.getElementById("vistaaltalibro");
       const divlistarautor = document.getElementById("vistalistarautor");
       const divlistarlibro = document.getElementById("vistalistarlibro");
+      const diveditarobra = document.getElementById("vistaeditarobra");
       const diveditarautor = document.getElementById("vistaeditarautor");
       
 
@@ -22,11 +24,12 @@ class Controlador {
       this.vistaAltaLibro = new VistaAltaLibro(this, divaltalibro);
       this.vistaListarAutor = new VistaListarAutor(this, divlistarautor);
       this.vistaListarLibro = new VistaListarLibro(this, divlistarlibro);
+      this.vistaEditarObra = new VistaEditarAutor(this, diveditarobra);
       this.vistaEditarAutor = new VistaEditarAutor(this, diveditarautor);
       this.modeloAutor = new ModeloAutor();
       this.modeloLibro = new ModeloLibro();
 
-      this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio,this.vistaEditarAutor];
+      this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio,this.vistaEditarAutor,this.vistaEditarObra];
 
       // Establecer cookie al cargar la página
       this.establecerCookieUltimaVisita();

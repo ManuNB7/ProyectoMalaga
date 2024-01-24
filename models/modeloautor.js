@@ -10,7 +10,7 @@ export class ModeloAutor {
     }
 
     static borrarAutor(id){
-      Rest.delete('https://migueljaque.com/fanlib/v1/autor/'+id,this.resultadoAJAX)
+      Rest.delete('https://migueljaque.com/fanlib/v1/autor'+id,this.resultadoAJAX)
     }
 
     static actualizarAutor(params) {

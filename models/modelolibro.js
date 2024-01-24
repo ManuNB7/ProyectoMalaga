@@ -11,7 +11,7 @@ export class ModeloLibro {
   }
 
   static borrarObra(id){
-    Rest.delete('https://migueljaque.com/fanlib/v1/obra/'+id,this.resultadoAJAX)
+    Rest.delete('https://migueljaque.com/fanlib/v1/obra'+id,this.resultadoAJAX)
   }
 
 }

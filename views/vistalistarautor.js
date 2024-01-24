@@ -94,21 +94,23 @@ export class VistaListarAutor extends Vista{
      * Elimina el autor seleccionado y todos sus libros.
      */
     eliminar = (autorId) => {
-        ModeloAutor.borrarAutor(autorId)
+        ModeloAutor.borrarAutor('/'+autorId)
     };
 
     eliminarMultiple = () => {
         const autores = document.getElementsByClassName('multiple');
         const checkboxes = Array.from(autores);
         const checkboxesSeleccionados = [];
+        let ids='';
         checkboxes.forEach(autor => {
           if(autor.checked){
             checkboxesSeleccionados.push(autor);
           }
         })
         checkboxesSeleccionados.forEach(autor => {
-          ModeloAutor.borrarAutor(autor.value);
+          ids=ids+'/'+autor.value;
         })
+        ModeloAutor.borrarAutor(ids);
             
       }
 

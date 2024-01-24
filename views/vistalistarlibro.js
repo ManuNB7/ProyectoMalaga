@@ -42,7 +42,18 @@ export class VistaListarLibro extends Vista {
       const checkFav = document.createElement("input");
       checkFav.type = 'checkbox';
       checkFav.value = obra.id;
-      checkFav.classList.add("favorito");
+      checkFav.classList.add("librofavorito");
+      checkFav.addEventListener('change',() => {
+        // Llamar a la función cuando el estado del checkbox cambia
+        if (checkFav.checked) {
+            // La función que deseas ejecutar cuando el checkbox está marcado
+            agregarLibroFavorito(obra.id);
+        } else {
+            // La función que deseas ejecutar cuando el checkbox está desmarcado
+            quitarLibroFavorito(obra.id);
+        }
+      }); 
+
       divLibro.appendChild(checkFav);
 
       const pTitulo = document.createElement("p");
@@ -85,21 +96,23 @@ export class VistaListarLibro extends Vista {
 
   eliminar = (obraId) => {
     // Implementa la lógica para eliminar obras.
-    ModeloLibro.borrarObra(obraId);
+    ModeloLibro.borrarObra('/'+obraId);
   }
 
   eliminarMultiple = () => {
     const obras = document.getElementsByClassName('multiple');
     const checkboxes = Array.from(obras);
     const checkboxesSeleccionados = [];
+    let ids='';
     checkboxes.forEach(obra => {
       if(obra.checked){
         checkboxesSeleccionados.push(obra);
       }
     })
     checkboxesSeleccionados.forEach(obra => {
-      ModeloLibro.borrarObra(obra.value);
+      ids=ids+'/'+obra.value;
     })
+    ModeloLibro.borrarObra(ids);
         
   }
 
