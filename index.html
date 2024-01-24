@@ -186,6 +186,7 @@
                 <div id="contenido">
                     <form id="formulario">
                         <div class="titulo">Libro: </div>
+                        <input type="hidden" id="idObraInputE">
                         <p>Titulo: <input type="text" name="titulo" id="tituloInputE"></p>
                         <p>Fecha publicacion: <input type="date" name="fecha_muerte" max="10/01/2024" id="fechaPublicacionInputE"></p>
                         <p>Reseña: </p>
@@ -195,7 +196,11 @@
                             <input type="file" id="portadaInputE" name="image" accept="image/*">
                             <img src="" id="imagenObraE">
                         </p>
-                        <p>Autor: <select id="AutorSelectE"></select></p>
+                        <p>Autor: <select id="ObraSelectE"></select></p>
+                        <p>Foto: <label for="imagenObraInputE"></label>
+                            <input type="file" id="imagenObraInputE" name="image" accept="image/*">
+                            <img src="" id="imagenObraE">
+                        </p>
                         <div class="botones">
                             <p>
                                 <input type="submit" value="Enviar" id="enviarlibro2">

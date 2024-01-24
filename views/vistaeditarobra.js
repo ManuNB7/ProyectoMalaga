@@ -30,14 +30,14 @@ export class VistaEditarObra extends Vista {
     insertar = (event) => {
         event.preventDefault();
 
-        // Obtener los valores de los campos del formulario
-        let id = document.getElementById('idAutorInputE').value;
-        let nombre = document.getElementById('nombreInputE').value;
-        let fechanacimiento = document.getElementById('fechanacimientoInputE').value;
-        let fechafallecimiento = document.getElementById('fechafallecimientoInputE').value;
-        let nacionalidad = document.getElementById('nacionalidadInputE').value;
-        let biografia = document.getElementById('biografiaInputE').value;
-        let imgPortada = document.getElementById('imagenAutorE').src;
+        let id = document.getElementById('idObraInputE').value;
+        let tituloInput = document.getElementById('tituloInputE').value;
+        let fechaPublicacionInput = document.getElementById('fechaPublicacionInputE').value;
+        let resenaInput = document.getElementById('resenaInputE').value;
+        let generoInput = document.getElementById('generoInputE').value;
+        let portadaInput = document.getElementById('portadaInputE').value;
+        let autorSelect = document.getElementById('AutorSelectE').value;
+        let imgPortada = document.getElementById('imagenObraE').src;
 
         // Obtener la imagen en base64
         let imagenautorInput = document.getElementById('imagenAutorInputE');

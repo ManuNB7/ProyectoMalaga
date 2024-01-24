@@ -46,11 +46,10 @@ export class VistaListarLibro extends Vista {
       checkFav.addEventListener('change',() => {
         // Llamar a la función cuando el estado del checkbox cambia
         if (checkFav.checked) {
-            // La función que deseas ejecutar cuando el checkbox está marcado
-            agregarLibroFavorito(obra.id);
-        } else {
-            // La función que deseas ejecutar cuando el checkbox está desmarcado
-            quitarLibroFavorito(obra.id);
+          // La función que deseas ejecutar cuando el checkbox está marcado
+          agregarLibroFavorito(obra.id);
+        }else{
+          quitarLibroFavorito(obra.id);
         }
       }); 
 
@@ -82,12 +81,19 @@ export class VistaListarLibro extends Vista {
       btnBorrar.onclick = () => {
         this.eliminar(obraId);
         this.controlador.irAVista(this.controlador.vistaListarLibro);
-    };
+      };
 
       divLibro.appendChild(btnBorrar);
 
       contenedorLibros.appendChild(divLibro);
     });
+    const agregarLibroFavorito = (libroId) => {
+      
+    };
+    const quitarLibroFavorito = (libroId) => {
+     
+    };
+
 }
 
   buscar = () => {
