@@ -45,6 +45,7 @@ export class VistaAltaLibro extends Vista{
 
     actualizarSelect(){
         this.autorSelect = document.getElementById('AutorSelect');
+        this.autorSelect.innerHTML='';
         ModeloAutor.actualizarLista();
         ModeloAutor.listaAutores.forEach(autor => {
             let option = document.createElement('option')
