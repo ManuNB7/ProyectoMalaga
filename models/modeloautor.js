@@ -5,20 +5,20 @@ export class ModeloAutor {
     constructor () {
       
     }
-    static guardarAutor(nuevoAutor) {
-      Rest.post('https://migueljaque.com/fanlib/v1/autor', nuevoAutor, this.resultadoAJAX)
+    static guardarAutor(nuevoAutor,callback) {
+      Rest.post('https://migueljaque.com/fanlib/v1/autor', nuevoAutor, callback)
     }
 
-    static borrarAutor(id){
-      Rest.delete('https://migueljaque.com/fanlib/v1/autor'+id,this.resultadoAJAX)
+    static borrarAutor(id,callback){
+      Rest.delete('https://migueljaque.com/fanlib/v1/autor'+id,callback)
     }
 
     static actualizarAutor(params) {
       Rest.put('https://migueljaque.com/fanlib/v1/autor/', params, this.resultadoAJAX);
     }
 
-    static listarAutor(){
-      Rest.get(url, this.listar);
+    static listarAutor(url,callback){
+      Rest.get(url, callback);
     }
     static actualizarLista(){
       Rest.get('https://migueljaque.com/fanlib/v1/autor/', (respuesta) => {

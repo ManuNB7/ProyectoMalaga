@@ -58,12 +58,14 @@ export class VistaAltaAutor extends Vista{
                     "foto": fotoBase64
                 };
     
-                ModeloAutor.guardarAutor(params);
-                this.controlador.irAVista(this.controlador.vistaListarAutor)
+                ModeloAutor.guardarAutor(params,this.irListar);
             };
     
             reader.readAsDataURL(file);
         } 
+    }
+    irlistar = () =>{
+        this.controlador.irAVista(this.controlador.vistaListarAutor);
     }
     resultadoAJAX = (objeto) => {
         console.log(objeto);

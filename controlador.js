@@ -31,9 +31,13 @@ class Controlador {
 
       this.vistas = [this.vistaAltaAutor, this.vistaAltaLibro, this.vistaListarAutor, this.vistaListarLibro,this.vistaInicio,this.vistaEditarAutor,this.vistaEditarObra];
 
+      this.vistaListarAutor.cargarDatosSelect();
+      
       // Establecer cookie al cargar la página
       this.establecerCookieUltimaVisita();
-      
+
+      this.mostrarInformacionUltimaVisitaEnVistas();
+
       this.irAVista(this.vistaInicio)
   }
 
@@ -71,16 +75,18 @@ class Controlador {
 
   irAVista(vista) {
       this.ocultarVistas();
-      this.vistaListarAutor.llamadaAJAX()
       vista.mostrar(true);
       if(vista==this.vistaListarLibro){
         this.vistaListarLibro.llamadaAJAX()
+      }
+      if(vista==this.vistaListarAutor){
+        this.vistaListarAutor.llamadaAJAX()
       }
       if(vista==this.vistaAltaLibro){
         this.vistaAltaLibro.actualizarSelect()
       }
       // Mostrar la información de la última visita al cambiar de vista
-      this.mostrarInformacionUltimaVisitaEnVistas();
+      
   }
   
 }

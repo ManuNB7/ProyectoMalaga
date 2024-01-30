@@ -63,7 +63,13 @@ export class VistaListarAutor extends Vista{
             checkBorrar.type = 'checkbox';
             checkBorrar.value = autor.id;
             checkBorrar.classList.add("multiple");
+
             contAutor.appendChild(checkBorrar);
+
+            const favoritoImg = document.createElement('img');
+            favoritoImg.src = "img/noFavorito.png";
+            favoritoImg.onclick = this.marcarFavorito(autor.id, favoritoImg);
+            contAutor.appendChild(favoritoImg);
         
             // Asignar una función onclick con el ID del autor
             btnBorrar.onclick = () => {
@@ -94,7 +100,7 @@ export class VistaListarAutor extends Vista{
      * Elimina el autor seleccionado y todos sus libros.
      */
     eliminar = (autorId) => {
-        ModeloAutor.borrarAutor('/'+autorId)
+        ModeloAutor.borrarAutor('/'+autorId,this.llamadaAJAX)
     };
 
     eliminarMultiple = () => {
@@ -110,8 +116,7 @@ export class VistaListarAutor extends Vista{
         checkboxesSeleccionados.forEach(autor => {
           ids=ids+'/'+autor.value;
         })
-        ModeloAutor.borrarAutor(ids);
-            
+        ModeloAutor.borrarAutor(ids,this.llamadaAJAX);
       }
 
     /**
@@ -124,7 +129,38 @@ export class VistaListarAutor extends Vista{
     /**
      * Marca y desmarca el autor como favorito del usuario
      */
-    marcarFavorito = () => {};
+    marcarFavorito = (id, imagen) => {
+      let valorCookie = this.obtenerValorCookie('autoresFavoritos');
+      if(valorCookie){
+        let array = JSON.parse(valorCookie);
+        array.push(id);
+        this.crearCookie('autoresFavoritos',array,1);
+      }
+      else{
+        let array = [id];
+        this.crearCookie('autoresFavoritos',array,1);
+      }
+      imagen.src = 'img/favorito.png';
+    };
+
+    obtenerValorCookie(nombre) {
+      const cookies = document.cookie.split(';'); // Obtener todas las cookies como una cadena de texto y dividirlas en un array
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim(); // Quitar espacios en blanco al inicio y al final de la cookie
+        if (cookie.indexOf(nombre + "=") === 0) { // Buscar la cookie por su nombre
+            return cookie.substring(nombre.length + 1, cookie.length); // Devolver el valor de la cookie
+        }
+      }
+      return null; // Devolver null si no se encuentra la cookie
+    }
+
+    crearCookie(nombre, array, diasExpiracion) {
+      let fechaExpiracion = new Date();
+      fechaExpiracion.setTime(fechaExpiracion.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
+      let expiracion = "expires=" + fechaExpiracion.toUTCString();
+      let arrayString = JSON.stringify(array); // Convertir el array a cadena de texto JSON
+      document.cookie = nombre + "=" + arrayString + ";" + expiracion + ";path=/";
+  }
 
     cargarDatosAutor = (datosAutor) => {
       // Asignar los valores a los campos del formulario
@@ -139,9 +175,11 @@ export class VistaListarAutor extends Vista{
   }
 
     llamadaAJAX = () => {
-        const url = 'https://migueljaque.com/fanlib/v1/autor';
-        Rest.get(url, this.listar);
-        ModeloAutor.actualizarLista(url);
+        ModeloAutor.listarAutor('https://migueljaque.com/fanlib/v1/autor', this.listar);
+    }
+    
+    cargarDatosSelect= () =>{
+      ModeloAutor.actualizarLista();
     }
 
     mostrarInformacionUltimaVisita(ultimaVisita) {
